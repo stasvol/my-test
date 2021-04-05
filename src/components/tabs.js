@@ -29,7 +29,6 @@ const Tabs = (props) =>{
     const [disabled, setDisabled] = useState(false)
 
     const toggle = tab => {
-
         if(activeTab !== tab && !disabled) {
             setActiveTab(tab)
             setDisabled(false)
@@ -37,10 +36,11 @@ const Tabs = (props) =>{
     }
 
     const handleClick = (tab) => {
-        setActiveTab(tab+1)
-        console.log(tab)
+        if (activeTab !== tab) {
+            setActiveTab(tab)
+            console.log(tab)
+        }
     }
-
         return (
          <div>
             <Container className={'mt-3'}>
@@ -53,8 +53,8 @@ const Tabs = (props) =>{
                             onClick={() => { toggle('1') }}>
                             Tab1
                         </NavLink>
-                        <button onClick={handleClick}>next</button>
-                        <button onClick={handleClick}>back</button>
+                        <button className={classnames({ active: activeTab === '2' })} onClick={()=>{handleClick('2')}}>next</button>
+                        <button className={classnames({ active: activeTab === '1' })} onClick={()=>handleClick('1')}>back</button>
                     </NavItem>
                     <NavItem>
                         <NavLink

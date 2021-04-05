@@ -26,11 +26,11 @@ const BasicInformation = ({...props}) => {
     //
     //  }
 
-     const modalError =  error ? 'not' : '';
-
-    const closeModal=()=> {
-        setError(false);
-    }
+    //  const modalError =  error ? 'not' : '';
+    //
+    // const closeModal=()=> {
+    //     setError(false);
+    // }
 
     return (
         <Form className={'mt-2'}>
@@ -62,15 +62,15 @@ const BasicInformation = ({...props}) => {
                 </Label>
             </FormGroup>
             </AvForm>
-            { !error  &&
-            <Modal isOpen={ error !== false} toggle={closeModal}>
-                <ModalHeader toggle={closeModal}>Form is {modalError} valid!</ModalHeader>
-                <ModalBody>
-                    {/*You have {modalError} successfully filled out the form and submitted it. Your email ({AvField}) is {modalError} valid!*/}
-                    <Button color="primary" onClick={closeModal}>Ok, got it!</Button>
-                </ModalBody>
-            </Modal>
-            }
+            {/*{ !error  &&*/}
+            {/*<Modal isOpen={ error !== false} toggle={closeModal}>*/}
+            {/*    <ModalHeader toggle={closeModal}>Form is {modalError} valid!</ModalHeader>*/}
+            {/*    <ModalBody>*/}
+            {/*        /!*You have {modalError} successfully filled out the form and submitted it. Your email ({AvField}) is {modalError} valid!*!/*/}
+            {/*        <Button color="primary" onClick={closeModal}>Ok, got it!</Button>*/}
+            {/*    </ModalBody>*/}
+            {/*</Modal>*/}
+            {/*}*/}
         </Form>
     )
 }

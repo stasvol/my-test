@@ -11,15 +11,15 @@ const PhotoFile = (props) => {
       const [imgFile, setImgFile] = useState([])
 
 
-    const InputRef = useRef( null );
+    // const InputRef = useRef( null );
 
-    const handleBtnClick = () => {
-
-
-        /*Collecting node-element and performing click*/
-        InputRef.currentTarget.focus();
-
-    }
+    // const handleBtnClick = () => {
+    //
+    //
+    //     /*Collecting node-element and performing click*/
+    //     InputRef.currentTarget.click();
+    //
+    // }
 
     const saveFile = (e) =>{
           // if (!e.target.files.length){
@@ -64,16 +64,30 @@ const PhotoFile = (props) => {
         //     console.log(file)
         // }
     }
-
+  // document.getElementById('button').addEventListener('click',()=>{
+  //     document.getElementById('exampleFile').click()
+  // })
     console.log(imgFile)
+
+   const upload =()=> {
+
+       // InputRef.currentTarget.click();
+        document.getElementById("exampleFile").click()
+    }
+
+    // <div style={{display: 'grid'}}>
+    //     <button id='plus' onClick={this.upload}>+</button>
+    //     <input id='selectImage' hidden type="file" onChange={fileSelectHandler} />
+    // </div>
 
     return(
         // <Form >
             <FormGroup>
                 <Label for="exampleFile">
-                <Input ref={InputRef} onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880}/>
+                <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880}/>
                 </Label>
-                <button onClick={()=>handleBtnClick(InputRef)}>open</button>
+                <Button id={'button'} color={'info'} onClick={upload}>Upload files</Button>
+
                 {imgFile.map((file, i) => (
                     <img key={i} src={file} alt="image" className={style.img} />
                 ))}
