@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react"
-import {Button, Form, FormGroup, Label, Input, FormText, TabPane} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup} from 'reactstrap';
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 
@@ -81,17 +81,20 @@ const PhotoFile = (props) => {
     // </div>
 
     return(
-        // <Form >
+        <div>
+        <Form >
             <FormGroup>
                 <Label for="exampleFile">
                 <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880}/>
                 </Label>
-                <Button id={'button'} color={'info'} onClick={upload}>Upload files</Button>
-
+                <Button className={style.btnAbsol} id={'button'} color={'info'} onClick={upload}>Upload files</Button>
+            </FormGroup>
+            <FormGroup>
                 {imgFile.map((file, i) => (
                     <img key={i} src={file} alt="image" className={style.img} />
                 ))}
-
+            </FormGroup>
+            <FormGroup>
                 {isSelected ? (
                     <div>
                         <p>Filename: {selectedFile.name}</p>
@@ -107,9 +110,25 @@ const PhotoFile = (props) => {
                 {/*    This is some placeholder block-level help text for the above input.*/}
                 {/*    It's a bit lighter and easily wraps to a new line.*/}
                 {/*</FormText>*/}
+                {/*<FormGroup>*/}
+                {/*    <Label for="exampleRange">Range</Label>*/}
+                {/*    <Input type="range" name="range" id="exampleRange"  width={"10%"}/>*/}
+                {/*</FormGroup>*/}
             </FormGroup>
+            {/*<FormGroup>*/}
+            {/*        <ButtonGroup>*/}
+            {/*            <Button className={style.btn}  color={'warning'}>Prev</Button>*/}
+            {/*            <Button className={style.btn} color={'success'}>Next</Button>*/}
+            {/*        </ButtonGroup>*/}
+            {/*</FormGroup>*/}
 
-        // </Form>
+        </Form>
+
+        <ButtonGroup>
+            <Button className={style.btn}  color={'warning'}>Prev</Button>
+            <Button className={style.btn} color={'success'}>Next</Button>
+        </ButtonGroup>
+        </div>
     )
 
 }

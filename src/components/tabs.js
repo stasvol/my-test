@@ -20,41 +20,45 @@ import ContactInformation from "./ComponentForm/contactInformation"
 import PhotoFile from "./ComponentForm/photoFiles";
 import Nove from "./ComponentForm/Nove";
 import Example from "./ComponentForm/validateFormReactstrap";
+import Publication from "./ComponentForm/publication";
 
 // import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'react-bootstrap'
 
 const Tabs = (props) =>{
 
-    const [activeTab, setActiveTab] = useState('1');
+    const [activeTab, setActiveTab] = useState('1')
     const [disabled, setDisabled] = useState(false)
+    const [tabsArr, setTabsArr] = useState([])
 
     const toggle = tab => {
+
         if(activeTab !== tab && !disabled) {
             setActiveTab(tab)
             setDisabled(false)
         }
     }
 
-    const handleClick = (tab) => {
-        if (activeTab !== tab) {
-            setActiveTab(tab)
-            console.log(tab)
-        }
-    }
+
+    // const handleClick = (tab) => {
+    //
+    //     // if (activeTab !== tab) {
+    //     //     setActiveTab(tab)
+    //     //     console.log(tab)
+    //     // }
+    // }
         return (
          <div>
+
             <Container className={'mt-3'}>
                 <Nav disabled tabs>
 
                     <NavItem>
-
                         <NavLink
                             className={classnames({ active: activeTab === '1' })}
                             onClick={() => { toggle('1') }}>
                             Tab1
                         </NavLink>
-                        <button className={classnames({ active: activeTab === '2' })} onClick={()=>{handleClick('2')}}>next</button>
-                        <button className={classnames({ active: activeTab === '1' })} onClick={()=>handleClick('1')}>back</button>
+
                     </NavItem>
                     <NavItem>
                         <NavLink
@@ -88,7 +92,7 @@ const Tabs = (props) =>{
                 <TabContent  activeTab={activeTab}>
                     <TabPane tabId="1">
                         <Row>
-                            <Col md="6">
+                            <Col sm="12">
                                 <h4>Основная информация:</h4>
                                 <BasicInformation />
                             </Col>
@@ -104,8 +108,8 @@ const Tabs = (props) =>{
                     </TabPane>
                     <TabPane tabId="3">
                         <Row>
-                            <Col sm="6">
-                                <h4>Фотография:</h4>
+                            <Col sm="12">
+                                <h4>Добавить фотографию:</h4>
                                 <PhotoFile/>
                             </Col>
                         </Row>
@@ -114,6 +118,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Публикация:</h4>
+                                <Publication/>
                             </Col>
                         </Row>
                     </TabPane>

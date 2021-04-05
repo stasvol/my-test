@@ -9,15 +9,16 @@ import {
     ModalBody,
     Modal,
     ModalHeader,
-    ModalFooter, Button
+    ModalFooter, Button, ButtonGroup
 } from 'reactstrap';
 import {AvForm, AvField} from 'availity-reactstrap-validation';
 import {required} from "./valdators";
+import style from "../CSS/tabs.module.css";
 
 const BasicInformation = ({...props}) => {
      // const [text, setText] = useState()
      const [error, setError] = useState(false)
-
+    const [isCheck, setIsCheck] = useState(false)
     // const  handleValidSubmit =(event, values) =>{
     //
     //  }
@@ -31,13 +32,19 @@ const BasicInformation = ({...props}) => {
     // const closeModal=()=> {
     //     setError(false);
     // }
-
+    const toggle =()=> {
+         if (isCheck) {
+             setIsCheck(false)
+         } else  if (!isCheck){
+             setIsCheck(true)
+         }
+    }
     return (
         <Form className={'mt-2'}>
             <AvForm>
             <FormGroup check inline>
 
-                    <Label>Заголовок:
+                    <Label sm={'12'} >Заголовок:
                         <AvField name={'text'} type="text" placeholder="Text" bsSize="lg" required/>
                         {/*<Input invalid type="text" placeholder="Text" bsSize="lg"/>*/}
                         {/*<FormFeedback invalid tooltip>Oh noes! that name is already taken</FormFeedback>*/}
@@ -47,7 +54,7 @@ const BasicInformation = ({...props}) => {
             </FormGroup>
             <FormGroup>
 
-                    <Label for="exampleText" sm={6}>Описание:
+                    <Label for="exampleText" sm={'3'}>Описание:
                         <AvField type="textarea" name={"textarea"} id="exampleText" placeholder="text" required/>
                         {/*<Input valid type="textarea" name="text" id="exampleText" />*/}
                         {/*<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>*/}
@@ -57,8 +64,13 @@ const BasicInformation = ({...props}) => {
 
             <FormGroup check inline>
                 <Label check>Статус:
-                    <CustomInput type="switch" id="exampleCustomSwitch" name="customSwitch"
-                                 label="confirm status"/>
+                     {isCheck
+                        ?  <b><i className={style.on}>  ON</i></b>
+                        :  <b><i className={style.of}>  OF</i></b>
+                     }
+                    <CustomInput onClick={toggle} type="switch" id="exampleCustomSwitch" name="customSwitch"
+                                     label="select" />
+
                 </Label>
             </FormGroup>
             </AvForm>
@@ -71,6 +83,11 @@ const BasicInformation = ({...props}) => {
             {/*    </ModalBody>*/}
             {/*</Modal>*/}
             {/*}*/}
+            <FormGroup >
+                <ButtonGroup  >
+                    <Button className={style.btnNext} color={'success'}>Next</Button>
+                </ButtonGroup>
+            </FormGroup>
         </Form>
     )
 }

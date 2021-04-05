@@ -1,6 +1,7 @@
 import React from "react";
-import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText, ButtonGroup} from 'reactstrap';
 import {AvForm,AvField} from "availity-reactstrap-validation";
+import style from "../CSS/tabs.module.css";
 
 const ContactInformation = (props) => {
 
@@ -22,6 +23,12 @@ const ContactInformation = (props) => {
 
             </FormGroup>
             </AvForm>
+          <FormGroup>
+            <ButtonGroup>
+                <Button className={style.btn}  color={'warning'}>Prev</Button>
+                <Button className={style.btn} color={'success'}>Next</Button>
+            </ButtonGroup>
+        </FormGroup>
         </Form>
     )
 
