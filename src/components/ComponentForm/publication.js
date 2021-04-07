@@ -43,12 +43,12 @@ const Publication =()=>{
                </div>
            </Label>
        </FormGroup>
-       <FormGroup check >
-       <ButtonGroup>
-           <Button className={style.btn}  color={'warning'}>Prev</Button>
-           <Button className={style.btn} color={'info'}>Save</Button>
-       </ButtonGroup>
-           </FormGroup>
+       {/*<FormGroup check >*/}
+       {/*<ButtonGroup>*/}
+       {/*    <Button className={style.btn}  color={'warning'}>Prev</Button>*/}
+       {/*    <Button className={style.btn} color={'info'}>Save</Button>*/}
+       {/*</ButtonGroup>*/}
+       {/*    </FormGroup>*/}
 
    </Form>
     )

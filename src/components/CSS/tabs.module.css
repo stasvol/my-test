@@ -7,7 +7,7 @@
     margin: 10px;
 }
 .on {
-    color: #16b807;
+    color: #12a20a;
 }
 .of {
     color: #cb0707;
@@ -18,7 +18,7 @@
     border: 1px solid silver;
     padding: 10px;
     background: #d9d9d9;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .btn{
     width: 150px;
@@ -27,5 +27,13 @@
 .btnNext{
     width: 250px;
     margin: 20px;
+}
+.Nav{
+     display: flex;
+    justify-content: center;
+    border-bottom: none !important;
+}
+.Botton {
+    margin-bottom: 20px;
 }
 

@@ -23,12 +23,12 @@ const ContactInformation = (props) => {
 
             </FormGroup>
             </AvForm>
-          <FormGroup>
-            <ButtonGroup>
-                <Button className={style.btn}  color={'warning'}>Prev</Button>
-                <Button className={style.btn} color={'success'}>Next</Button>
-            </ButtonGroup>
-        </FormGroup>
+        {/*  <FormGroup>*/}
+        {/*    <ButtonGroup>*/}
+        {/*        <Button className={style.btn}  color={'warning'}>Prev</Button>*/}
+        {/*        <Button className={style.btn} color={'success'}>Next</Button>*/}
+        {/*    </ButtonGroup>*/}
+        {/*</FormGroup>*/}
         </Form>
     )
 

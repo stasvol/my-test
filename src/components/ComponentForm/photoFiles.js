@@ -81,7 +81,6 @@ const PhotoFile = (props) => {
     // </div>
 
     return(
-        <div>
         <Form >
             <FormGroup>
                 <Label for="exampleFile">
@@ -123,12 +122,6 @@ const PhotoFile = (props) => {
             {/*</FormGroup>*/}
 
         </Form>
-
-        <ButtonGroup>
-            <Button className={style.btn}  color={'warning'}>Prev</Button>
-            <Button className={style.btn} color={'success'}>Next</Button>
-        </ButtonGroup>
-        </div>
     )
 
 }

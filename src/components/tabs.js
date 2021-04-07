@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import classnames from "classnames"
 import style from "./CSS/tabs.module.css"
 import {
-    Button,
+    Button, ButtonGroup,
     Card,
     CardText,
     CardTitle,
     Col,
-    Container,
+    Container, Form, FormGroup,
     Nav,
     NavItem,
     NavLink,
@@ -21,6 +21,7 @@ import PhotoFile from "./ComponentForm/photoFiles";
 import Nove from "./ComponentForm/Nove";
 import Example from "./ComponentForm/validateFormReactstrap";
 import Publication from "./ComponentForm/publication";
+import {AvField} from "availity-reactstrap-validation";
 
 // import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'react-bootstrap'
 
@@ -28,17 +29,14 @@ const Tabs = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1')
     const [disabled, setDisabled] = useState(false)
-    const [tabsArr, setTabsArr] = useState([])
 
     const toggle = tab => {
 
-        if(activeTab !== tab && !disabled) {
+        if(activeTab !== tab  && !disabled) {
             setActiveTab(tab)
             setDisabled(false)
         }
     }
-
-
     // const handleClick = (tab) => {
     //
     //     // if (activeTab !== tab) {
@@ -50,9 +48,9 @@ const Tabs = (props) =>{
          <div>
 
             <Container className={'mt-3'}>
-                <Nav disabled tabs>
+                <Nav  tabs className={style.Nav}>
 
-                    <NavItem>
+                    <NavItem className={style.Botton}>
                         <NavLink
                             className={classnames({ active: activeTab === '1' })}
                             onClick={() => { toggle('1') }}>
@@ -81,13 +79,13 @@ const Tabs = (props) =>{
                             Tab4
                         </NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '5' })}
-                            onClick={() => { toggle('5'); }}>
-                            More Tabs
-                        </NavLink>
-                    </NavItem>
+                    {/*<NavItem>*/}
+                    {/*    <NavLink*/}
+                    {/*        className={classnames({ active: activeTab === '5' })}*/}
+                    {/*        onClick={() => { toggle('5'); }}>*/}
+                    {/*        More Tabs*/}
+                    {/*    </NavLink>*/}
+                    {/*</NavItem>*/}
                 </Nav>
                 <TabContent  activeTab={activeTab}>
                     <TabPane tabId="1">
@@ -95,6 +93,10 @@ const Tabs = (props) =>{
                             <Col sm="12">
                                 <h4>Основная информация:</h4>
                                 <BasicInformation />
+                                <ButtonGroup>
+                                    <Button type={"submit"} className={classnames({ active: activeTab === '2' },style.btnNext)}
+                                                onClick={() => { toggle('2'); }} color={'success'}>Next</Button>
+                                </ButtonGroup>
                             </Col>
                         </Row>
                     </TabPane>
@@ -103,6 +105,15 @@ const Tabs = (props) =>{
                             <Col sm="12">
                                 <h4>Контактная информация:</h4>
                                 <ContactInformation/>
+                                <FormGroup>
+                                    <ButtonGroup>
+                                        <Button className={classnames({ active: activeTab === '1' },style.btn)}
+                                                        onClick={() => { toggle('1') }} color={'warning'}>Prev</Button>
+
+                                        <Button   className={classnames({ active: activeTab === '3' },style.btn)}
+                                                  onClick={() => { toggle('3'); }} color={'success'}>Next</Button>
+                                    </ButtonGroup>
+                                </FormGroup>
                             </Col>
                         </Row>
                     </TabPane>
@@ -111,6 +122,15 @@ const Tabs = (props) =>{
                             <Col sm="12">
                                 <h4>Добавить фотографию:</h4>
                                 <PhotoFile/>
+                                <FormGroup>
+                                    <ButtonGroup>
+                                        <Button className={classnames({ active: activeTab === '2' },style.btn)}
+                                                            onClick={() => { toggle('2'); }} color={'warning'}>Prev</Button>
+
+                                        <Button  className={classnames({ active: activeTab === '4' }, style.btn)}
+                                                 onClick={() => { toggle('4'); }} color={'success'}>Next</Button>
+                                    </ButtonGroup>
+                                </FormGroup>
                             </Col>
                         </Row>
                     </TabPane>
@@ -119,34 +139,40 @@ const Tabs = (props) =>{
                             <Col sm="12">
                                 <h4>Публикация:</h4>
                                 <Publication/>
+                                <FormGroup check >
+                                    <ButtonGroup>
+                                        <Button className={classnames({ active: activeTab === '3' },style.btn)}
+                                                onClick={() => { toggle('3'); }}  color={'warning'}>Prev</Button>
+                                        <Button className={style.btn} color={'info'}>Save</Button>
+                                    </ButtonGroup>
+                                </FormGroup>
                             </Col>
                         </Row>
                     </TabPane>
-                    <TabPane tabId="5">
-                        <Row>
-                            <Col sm="6">
-                                <Card body>
-                                    <CardTitle>Special Title Treatment</CardTitle>
-                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                    <Button>Go somewhere</Button>
-                                </Card>
-                            </Col>
-                            <Col sm="6">
-                                <Card body>
-                                    <CardTitle>Special Title Treatment</CardTitle>
-                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                    <Button>Go somewhere</Button>
-                                </Card>
-                            </Col>
-                        </Row>
-                    </TabPane>
+                    {/*<TabPane tabId="5">*/}
+                    {/*    <Row>*/}
+                    {/*        <Col sm="6">*/}
+                    {/*            <Card body>*/}
+                    {/*                <CardTitle>Special Title Treatment</CardTitle>*/}
+                    {/*                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
+                    {/*                <Button>Go somewhere</Button>*/}
+                    {/*            </Card>*/}
+                    {/*        </Col>*/}
+                    {/*        <Col sm="6">*/}
+                    {/*            <Card body>*/}
+                    {/*                <CardTitle>Special Title Treatment</CardTitle>*/}
+                    {/*                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
+                    {/*                <Button>Go somewhere</Button>*/}
+                    {/*            </Card>*/}
+                    {/*        </Col>*/}
+                    {/*    </Row>*/}
+                    {/*</TabPane>                  */}
                 </TabContent>
             </Container>
              {/*<Nove/>*/}
              {/*<Example/>*/}
          </div>
         )
-
 }
 
 export default Tabs
