@@ -16,12 +16,11 @@ import {AvForm, AvField} from 'availity-reactstrap-validation';
 import {required} from "./valdators";
 import style from "../CSS/tabs.module.css";
 
-const BasicInformation = ({toggle,tabId,...props}) => {
+const BasicInformation = ({...props}) => {
 
-    const [activeTab, setActiveTab] = useState('1')
-    const [disabled, setDisabled] = useState(false)
+
     const [isCheck, setIsCheck] = useState(false)
-    const [valueTabOne, setValueTabOne] = useState('')
+    const [valueTab, setValueTab] = useState('')
     // const [error, setError] = useState(false)
     // const  handleValidSubmit =(event, values) =>{
     //
@@ -41,19 +40,15 @@ const BasicInformation = ({toggle,tabId,...props}) => {
 
            e.preventDefault()
 
-        setValueTabOne(e.target.value)
-        // setValueTabOne(  [...valueTabOne,value])
+        const value = (e.target.value)
 
+        setValueTab( [...valueTab,value])
 
-          if ( valueTabOne  &&  !disabled ) {
-              return setDisabled(false)
-
-          }
-            // console.log(value)
+        props.createDataChild(valueTab)
             // console.log(valueTabOne)
     }
 
-    console.log(valueTabOne)
+    // console.log(valueTab)
 
     const toggleCheck =()=> {
          if (isCheck) {
@@ -122,5 +117,6 @@ const BasicInformation = ({toggle,tabId,...props}) => {
         </Form>
     )
 }
+
 
 export default BasicInformation

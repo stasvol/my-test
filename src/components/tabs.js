@@ -1,20 +1,8 @@
 import React, {useState} from "react";
 import classnames from "classnames"
 import style from "./CSS/tabs.module.css"
-import {
-    Button, ButtonGroup,
-    Card,
-    CardText,
-    CardTitle,
-    Col,
-    Container, Form, FormGroup,
-    Nav,
-    NavItem,
-    NavLink,
-    Row,
-    TabContent,
-    TabPane
-} from "reactstrap";
+import {Button, ButtonGroup, Card, CardText, CardTitle, Col, Container, Form, FormGroup, Nav,
+        NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
 import BasicInformation from "./ComponentForm/basicInformation";
 import ContactInformation from "./ComponentForm/contactInformation"
 import PhotoFile from "./ComponentForm/photoFiles";
@@ -28,15 +16,21 @@ import {AvField} from "availity-reactstrap-validation";
 const Tabs = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1')
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(true)
+    const [valueTab, setValueTab] = useState('')
 
     const toggle = tab => {
 
-        if(activeTab !== tab  && !disabled) {
+        if(activeTab !== tab ) {
             setActiveTab(tab)
-            setDisabled(false)
         }
     }
+
+    const createDataChild =(value)=> {
+        setValueTab(value)
+    }
+
+    console.log(valueTab)
     // const handleClick = (tab) => {
     //
     //     // if (activeTab !== tab) {
@@ -45,12 +39,12 @@ const Tabs = (props) =>{
     //     // }
     // }
         return (
-         <div>
+         <div >
 
             <Container className={'mt-3'}>
                 <Nav  tabs className={style.Nav}>
 
-                    <NavItem className={style.Botton}>
+                    <NavItem    className={style.Botton}>
                         <NavLink
                             className={classnames({ active: activeTab === '1' })}
                             onClick={() => { toggle('1') }}>
@@ -92,10 +86,13 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Основная информация:</h4>
-                                <BasicInformation />
+                                <BasicInformation  createDataChild={createDataChild} />
                                 <ButtonGroup>
-                                    <Button type={"submit"} className={classnames({ active: activeTab === '2' },style.btnNext)}
-                                                onClick={() => { toggle('2'); }} color={'success'}>Next</Button>
+
+                                      <Button  type={"submit"}
+                                        className={classnames({active: activeTab === '2'}, style.btnNext)}
+                                        onClick={() => {toggle('2');}} color={'success'}>Next</Button>
+
                                 </ButtonGroup>
                             </Col>
                         </Row>
