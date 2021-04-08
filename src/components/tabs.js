@@ -10,6 +10,7 @@ import Nove from "./ComponentForm/Nove";
 import Example from "./ComponentForm/validateFormReactstrap";
 import Publication from "./ComponentForm/publication";
 import {AvField} from "availity-reactstrap-validation";
+import handleSubmit from "redux-form/lib/handleSubmit";
 
 // import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'react-bootstrap'
 
@@ -18,6 +19,7 @@ const Tabs = (props) =>{
     const [activeTab, setActiveTab] = useState('1')
     const [disabled, setDisabled] = useState(true)
     const [valueTab, setValueTab] = useState('')
+    const [imgFile, setImgFile] = useState([])
 
     const toggle = tab => {
 
@@ -26,9 +28,18 @@ const Tabs = (props) =>{
         }
     }
 
-    const createDataChild =(value)=> {
+    const createDataChild =(value,imgFile)=> {
         setValueTab(value)
     }
+
+    const newValueTab = () =>{
+        if (!valueTab ) {
+            setDisabled(true)
+        }else if (valueTab) {
+            setDisabled(false)
+        }
+    }
+
 
     console.log(valueTab)
     // const handleClick = (tab) => {
@@ -45,7 +56,7 @@ const Tabs = (props) =>{
                 <Nav  tabs className={style.Nav}>
 
                     <NavItem    className={style.Botton}>
-                        <NavLink
+                        <NavLink disabled={!valueTab}
                             className={classnames({ active: activeTab === '1' })}
                             onClick={() => { toggle('1') }}>
                             Tab1
@@ -53,21 +64,21 @@ const Tabs = (props) =>{
 
                     </NavItem>
                     <NavItem>
-                        <NavLink
+                        <NavLink disabled={!valueTab}
                             className={classnames({ active: activeTab === '2' })}
                             onClick={() => { toggle('2'); }}>
                             Tab2
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink
+                        <NavLink disabled={imgFile <= 0}
                             className={classnames({ active: activeTab === '3' })}
                             onClick={() => { toggle('3'); }}>
                             Tab3
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink
+                        <NavLink disabled={!valueTab}
                             className={classnames({ active: activeTab === '4' })}
                             onClick={() => { toggle('4'); }}>
                             Tab4
@@ -86,14 +97,14 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Основная информация:</h4>
-                                <BasicInformation  createDataChild={createDataChild} />
-                                <ButtonGroup>
+                                <BasicInformation  createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab} />
+                                {/*<ButtonGroup>*/}
+                                {/*    */}
+                                {/*    <Button disabled={!valueTab }*/}
+                                {/*        className={classnames({active: activeTab === '2' }, style.btnNext)}*/}
+                                {/*         onClick={() => {toggle('2')}} color={'success'}>Next</Button>*/}
 
-                                      <Button  type={"submit"}
-                                        className={classnames({active: activeTab === '2'}, style.btnNext)}
-                                        onClick={() => {toggle('2');}} color={'success'}>Next</Button>
-
-                                </ButtonGroup>
+                                {/*</ButtonGroup>*/}
                             </Col>
                         </Row>
                     </TabPane>
@@ -101,16 +112,16 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Контактная информация:</h4>
-                                <ContactInformation/>
-                                <FormGroup>
-                                    <ButtonGroup>
-                                        <Button className={classnames({ active: activeTab === '1' },style.btn)}
-                                                        onClick={() => { toggle('1') }} color={'warning'}>Prev</Button>
+                                <ContactInformation createDataChild={createDataChild} toggle={toggle} activeTab={activeTab}/>
+                                {/*<FormGroup>*/}
+                                {/*    <ButtonGroup toggle={toggle} activeTab={activeTab}>*/}
+                                {/*        <Button className={classnames({ active: activeTab === '1' },style.btn)}*/}
+                                {/*                        onClick={() => { toggle('1') }} color={'warning'}>Prev</Button>*/}
 
-                                        <Button   className={classnames({ active: activeTab === '3' },style.btn)}
-                                                  onClick={() => { toggle('3'); }} color={'success'}>Next</Button>
-                                    </ButtonGroup>
-                                </FormGroup>
+                                {/*        <Button disabled={!valueTab} className={classnames({ active: activeTab === '3' },style.btn)}*/}
+                                {/*                  onClick={() => { toggle('3'); }} color={'success'}>Next</Button>*/}
+                                {/*    </ButtonGroup>*/}
+                                {/*</FormGroup>*/}
                             </Col>
                         </Row>
                     </TabPane>
@@ -118,16 +129,16 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Добавить фотографию:</h4>
-                                <PhotoFile/>
-                                <FormGroup>
-                                    <ButtonGroup>
-                                        <Button className={classnames({ active: activeTab === '2' },style.btn)}
-                                                            onClick={() => { toggle('2'); }} color={'warning'}>Prev</Button>
+                                <PhotoFile createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab}/>
+                                {/*<FormGroup>*/}
+                                {/*    <ButtonGroup>*/}
+                                {/*        <Button className={classnames({ active: props.activeTab === '2' },style.btn)}*/}
+                                {/*                            onClick={() => { props.toggle('2'); }} color={'warning'}>Prev</Button>*/}
 
-                                        <Button  className={classnames({ active: activeTab === '4' }, style.btn)}
-                                                 onClick={() => { toggle('4'); }} color={'success'}>Next</Button>
-                                    </ButtonGroup>
-                                </FormGroup>
+                                {/*        <Button  className={classnames({ active: props.activeTab === '4' }, style.btn)}*/}
+                                {/*                 onClick={() => { props.toggle('4'); }} color={'success'}>Next</Button>*/}
+                                {/*    </ButtonGroup>*/}
+                                {/*</FormGroup>*/}
                             </Col>
                         </Row>
                     </TabPane>
@@ -135,14 +146,14 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Публикация:</h4>
-                                <Publication/>
-                                <FormGroup check >
-                                    <ButtonGroup>
-                                        <Button className={classnames({ active: activeTab === '3' },style.btn)}
-                                                onClick={() => { toggle('3'); }}  color={'warning'}>Prev</Button>
-                                        <Button className={style.btn} color={'info'}>Save</Button>
-                                    </ButtonGroup>
-                                </FormGroup>
+                                <Publication createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab}/>
+                                {/*<FormGroup check >*/}
+                                {/*    <ButtonGroup>*/}
+                                {/*        <Button className={classnames({ active: props.activeTab === '3' },style.btn)}*/}
+                                {/*                onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>*/}
+                                {/*        <Button onSubmit={handleSubmit} className={style.btn} color={'info'}>Save</Button>*/}
+                                {/*    </ButtonGroup>*/}
+                                {/*</FormGroup>*/}
                             </Col>
                         </Row>
                     </TabPane>

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react"
-import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup, Col} from 'reactstrap';
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 
@@ -9,7 +9,21 @@ const PhotoFile = (props) => {
       const [selectedFile, setSelectedFile ] = useState([])
       const [isSelected, setIsSelected] = useState(false)
       const [imgFile, setImgFile] = useState([])
+      const [valueTab, setValueTab] = useState('')
 
+
+    const handleChange = (e)=>{
+
+        e.preventDefault()
+
+        const value = (e.target.value)
+
+        setValueTab( [...valueTab,value])
+
+
+        props.createDataChild(valueTab,imgFile)
+        // console.log(valueTabOne)
+    }
 
     // const InputRef = useRef( null );
 
@@ -114,12 +128,15 @@ const PhotoFile = (props) => {
                 {/*    <Input type="range" name="range" id="exampleRange"  width={"10%"}/>*/}
                 {/*</FormGroup>*/}
             </FormGroup>
-            {/*<FormGroup>*/}
-            {/*        <ButtonGroup>*/}
-            {/*            <Button className={style.btn}  color={'warning'}>Prev</Button>*/}
-            {/*            <Button className={style.btn} color={'success'}>Next</Button>*/}
-            {/*        </ButtonGroup>*/}
-            {/*</FormGroup>*/}
+            <FormGroup>
+                <ButtonGroup>
+                    <Button  className={classnames({ active: props.activeTab === '2' },style.btn)}
+                            onClick={() => { props.toggle('2'); }} color={'warning'}>Prev</Button>
+
+                    <Button disabled={!imgFile.length} className={classnames({ active: props.activeTab === '4' }, style.btn)}
+                             onClick={() => { props.toggle('4');}} color={'success'}>Next</Button>
+                </ButtonGroup>
+            </FormGroup>
 
         </Form>
     )

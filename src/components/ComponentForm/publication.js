@@ -1,9 +1,16 @@
 import React from "react";
-import {Button, ButtonGroup, Form, FormGroup, Input, Label} from "reactstrap";
+import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import style from "../CSS/tabs.module.css";
+import classnames from "classnames";
+import handleSubmit from "redux-form/lib/handleSubmit";
 
 
-const Publication =()=>{
+const Publication =(props)=>{
+    debugger
+    const handleSubmit =()=>{
+
+    }
+
 
     return(
 
@@ -42,6 +49,14 @@ const Publication =()=>{
                <Input type="checkbox" />  УСЛУГА 5
                </div>
            </Label>
+       </FormGroup>
+
+       <FormGroup check >
+           <ButtonGroup>
+               <Button className={classnames({ active: props.activeTab === '3' },style.btn)}
+                       onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>
+               <Button onSubmit={handleSubmit} className={style.btn} color={'info'}>Save</Button>
+           </ButtonGroup>
        </FormGroup>
        {/*<FormGroup check >*/}
        {/*<ButtonGroup>*/}

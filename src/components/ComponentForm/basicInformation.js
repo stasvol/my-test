@@ -15,6 +15,7 @@ import {
 import {AvForm, AvField} from 'availity-reactstrap-validation';
 import {required} from "./valdators";
 import style from "../CSS/tabs.module.css";
+import classnames from "classnames";
 
 const BasicInformation = ({...props}) => {
 
@@ -51,11 +52,12 @@ const BasicInformation = ({...props}) => {
     // console.log(valueTab)
 
     const toggleCheck =()=> {
-         if (isCheck) {
-             setIsCheck(false)
-         } else  if (!isCheck){
-             setIsCheck(true)
-         }
+        setIsCheck(!isCheck)
+         // if (isCheck) {
+         //     setIsCheck(false)
+         // } else  if (!isCheck){
+         //     setIsCheck(true)
+         // }
     }
 
     return (
@@ -81,7 +83,7 @@ const BasicInformation = ({...props}) => {
             <FormGroup>
 
                     <Label for="exampleText" sm={'3'}>Описание:
-                        <AvField type="textarea" name={"textarea"} id="exampleText" placeholder="text" />
+                        <AvField  type="textarea" name={"textarea"} id="exampleText" placeholder="text" />
                         {/*<Input valid type="textarea" name="text" id="exampleText" />*/}
                         {/*<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>*/}
                     </Label>
@@ -99,7 +101,16 @@ const BasicInformation = ({...props}) => {
 
                 </Label>
             </FormGroup>
+
             </AvForm>
+
+            <ButtonGroup>
+
+                <Button disabled={!valueTab }
+                        className={classnames({active: props.activeTab === '2' }, style.btnNext)}
+                        onClick={() => {props.toggle('2')}} color={'success'}>Next</Button>
+
+            </ButtonGroup>
             {/*{ !error  &&*/}
             {/*<Modal isOpen={ error !== false} toggle={closeModal}>*/}
             {/*    <ModalHeader toggle={closeModal}>Form is {modalError} valid!</ModalHeader>*/}
