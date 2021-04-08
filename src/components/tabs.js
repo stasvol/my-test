@@ -41,7 +41,7 @@ const Tabs = (props) =>{
     }
 
 
-    console.log(valueTab)
+    // console.log(valueTab)
     // const handleClick = (tab) => {
     //
     //     // if (activeTab !== tab) {

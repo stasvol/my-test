@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
@@ -6,10 +6,25 @@ import handleSubmit from "redux-form/lib/handleSubmit";
 
 
 const Publication =(props)=>{
-    debugger
-    const handleSubmit =()=>{
 
+    const [valueTab, setValueTab] = useState('')
+
+    const handleChange = (e)=>{
+
+        e.preventDefault()
+
+        const value = (e.target.value)
+
+        setValueTab( [...valueTab,value])
+
+
+        props.createDataChild(valueTab)
+        // console.log(valueTabOne)
     }
+
+    // const handleSubmit =()=>{
+    //     handleChange()
+    // }
 
 
     return(
@@ -55,7 +70,7 @@ const Publication =(props)=>{
            <ButtonGroup>
                <Button className={classnames({ active: props.activeTab === '3' },style.btn)}
                        onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>
-               <Button onSubmit={handleSubmit} className={style.btn} color={'info'}>Save</Button>
+               <Button onSubmit={handleChange} className={style.btn} color={'info'}>Save</Button>
            </ButtonGroup>
        </FormGroup>
        {/*<FormGroup check >*/}

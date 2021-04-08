@@ -22,6 +22,7 @@ const BasicInformation = ({...props}) => {
 
     const [isCheck, setIsCheck] = useState(false)
     const [valueTab, setValueTab] = useState('')
+
     // const [error, setError] = useState(false)
     // const  handleValidSubmit =(event, values) =>{
     //
@@ -45,11 +46,11 @@ const BasicInformation = ({...props}) => {
 
         setValueTab( [...valueTab,value])
 
-        props.createDataChild(valueTab)
+        // props.createDataChild(valueTab)
             // console.log(valueTabOne)
     }
 
-    // console.log(valueTab)
+    console.log(valueTab)
 
     const toggleCheck =()=> {
         setIsCheck(!isCheck)
@@ -83,7 +84,7 @@ const BasicInformation = ({...props}) => {
             <FormGroup>
 
                     <Label for="exampleText" sm={'3'}>Описание:
-                        <AvField  type="textarea" name={"textarea"} id="exampleText" placeholder="text" />
+                        <AvField onChange={handleChange} type="textarea" name={"textarea"} id="exampleText" placeholder="text" />
                         {/*<Input valid type="textarea" name="text" id="exampleText" />*/}
                         {/*<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>*/}
                     </Label>
