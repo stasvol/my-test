@@ -21,7 +21,7 @@ const PhotoFile = (props) => {
         setValueTab( [...valueTab,value])
 
 
-        props.createDataChild(valueTab,imgFile)
+        // props.createDataChild(valueTab,imgFile)
         // console.log(valueTabOne)
     }
 
@@ -108,17 +108,17 @@ const PhotoFile = (props) => {
                 ))}
             </FormGroup>
             <FormGroup>
-                {isSelected ? (
-                    <div>
-                        <p>Filename: {selectedFile.name}</p>
-                        <p>Filetype: {selectedFile.type}</p>
-                        <p>Size in bytes: {selectedFile.size}</p>
-                        <p>lastModified: {selectedFile.lastModified}</p>
-                          <p>Date:  {selectedFile.lastModifiedDate.toLocaleString()}</p>
-                    </div>
-                ) : (
-                    <p>Select a file to show details</p>
-                )}
+                {/*{isSelected ? (*/}
+                {/*    <div>*/}
+                {/*        <p>Filename: {selectedFile.name}</p>*/}
+                {/*        <p>Filetype: {selectedFile.type}</p>*/}
+                {/*        <p>Size in bytes: {selectedFile.size}</p>*/}
+                {/*        <p>lastModified: {selectedFile.lastModified}</p>*/}
+                {/*          <p>Date:  {selectedFile.lastModifiedDate.toLocaleString()}</p>*/}
+                {/*    </div>*/}
+                {/*) : (*/}
+                {/*    <p>Select a file to show details</p>*/}
+                {/*)}*/}
                 {/*<FormText color="default">*/}
                 {/*    This is some placeholder block-level help text for the above input.*/}
                 {/*    It's a bit lighter and easily wraps to a new line.*/}
@@ -133,7 +133,7 @@ const PhotoFile = (props) => {
                     <Button  className={classnames({ active: props.activeTab === '2' },style.btn)}
                             onClick={() => { props.toggle('2'); }} color={'warning'}>Prev</Button>
 
-                    <Button disabled={!imgFile.length} className={classnames({ active: props.activeTab === '4' }, style.btn)}
+                    <Button  className={classnames({ active: props.activeTab === '4' }, style.btn)}
                              onClick={() => { props.toggle('4');}} color={'success'}>Next</Button>
                 </ButtonGroup>
             </FormGroup>

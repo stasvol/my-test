@@ -16,6 +16,7 @@ import {AvForm, AvField} from 'availity-reactstrap-validation';
 import {required} from "./valdators";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
+import classNames from "classnames";
 
 const BasicInformation = ({...props}) => {
 
@@ -45,12 +46,11 @@ const BasicInformation = ({...props}) => {
         const value = (e.target.value)
 
         setValueTab( [...valueTab,value])
-
         // props.createDataChild(valueTab)
             // console.log(valueTabOne)
     }
 
-    console.log(valueTab)
+    console.log(valueTab +','+ isCheck)
 
     const toggleCheck =()=> {
         setIsCheck(!isCheck)
@@ -98,7 +98,7 @@ const BasicInformation = ({...props}) => {
                         :  <b><i className={style.of}>  OF</i></b>
                      }
                     <CustomInput onClick={toggleCheck} type="switch" id="exampleCustomSwitch" name="customSwitch"
-                                     label="select" />
+                                     label="select" value={isCheck}  />
 
                 </Label>
             </FormGroup>

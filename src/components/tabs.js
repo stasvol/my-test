@@ -28,17 +28,17 @@ const Tabs = (props) =>{
         }
     }
 
-    const createDataChild =(value,imgFile)=> {
-        setValueTab(value)
-    }
+    // const createDataChild =(value,imgFile)=> {
+    //     setValueTab(value)
+    // }
 
-    const newValueTab = () =>{
-        if (!valueTab ) {
-            setDisabled(true)
-        }else if (valueTab) {
-            setDisabled(false)
-        }
-    }
+    // const newValueTab = () =>{
+    //     if (!valueTab ) {
+    //         setDisabled(true)
+    //     }else if (valueTab) {
+    //         setDisabled(false)
+    //     }
+    // }
 
 
     // console.log(valueTab)
@@ -97,7 +97,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Основная информация:</h4>
-                                <BasicInformation  createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab} />
+                                <BasicInformation   toggle={toggle} activeTab={activeTab} />
                                 {/*<ButtonGroup>*/}
                                 {/*    */}
                                 {/*    <Button disabled={!valueTab }*/}
@@ -112,7 +112,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Контактная информация:</h4>
-                                <ContactInformation createDataChild={createDataChild} toggle={toggle} activeTab={activeTab}/>
+                                <ContactInformation  toggle={toggle} activeTab={activeTab}/>
                                 {/*<FormGroup>*/}
                                 {/*    <ButtonGroup toggle={toggle} activeTab={activeTab}>*/}
                                 {/*        <Button className={classnames({ active: activeTab === '1' },style.btn)}*/}
@@ -129,7 +129,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Добавить фотографию:</h4>
-                                <PhotoFile createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab}/>
+                                <PhotoFile  toggle={toggle} activeTab={activeTab}/>
                                 {/*<FormGroup>*/}
                                 {/*    <ButtonGroup>*/}
                                 {/*        <Button className={classnames({ active: props.activeTab === '2' },style.btn)}*/}
@@ -146,7 +146,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Публикация:</h4>
-                                <Publication createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab}/>
+                                <Publication  toggle={toggle} activeTab={activeTab}/>
                                 {/*<FormGroup check >*/}
                                 {/*    <ButtonGroup>*/}
                                 {/*        <Button className={classnames({ active: props.activeTab === '3' },style.btn)}*/}
