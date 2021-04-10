@@ -9,7 +9,7 @@ const Publication =(props)=>{
 
     // const [valueTab, setValueTab] = useState('')
     // const [checkValue, setCheckValue] = useState([])
-    const [checkbox, setCheckbox ] =  useState([])
+    const [checkbox, setCheckbox ] =  useState()
 
     // const handleChange = (checked)=>{
     //     // e.preventDefault()
@@ -39,10 +39,16 @@ const Publication =(props)=>{
         console.log(checkbox)
     }
 
+    const handleSubmit=(event)=>{
+
+        event.preventDefault();
+        const data = new FormData(event.target);
+        console.log(data)
+    }
 
     return(
 
-   <Form>
+   <Form onSubmit={handleSubmit}>
 
     <FormGroup check>
         <Label check>
@@ -84,7 +90,7 @@ const Publication =(props)=>{
            <ButtonGroup>
                <Button className={classnames({ active: props.activeTab === '3' },style.btn)}
                        onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>
-               <Button  className={style.btn} color={'info'}>Save</Button>
+               <Button   className={style.btn} color={'info'}>Save</Button>
            </ButtonGroup>
        </FormGroup>
        {/*<FormGroup check >*/}
