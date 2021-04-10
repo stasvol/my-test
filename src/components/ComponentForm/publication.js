@@ -9,7 +9,7 @@ const Publication =(props)=>{
 
     // const [valueTab, setValueTab] = useState('')
     // const [checkValue, setCheckValue] = useState([])
-    const [checkbox, setCheckbox ] =  useState()
+    const [check, setCheck ] =  useState()
 
     // const handleChange = (checked)=>{
     //     // e.preventDefault()
@@ -26,25 +26,31 @@ const Publication =(props)=>{
 
     const handleClick =(e)=>{
 
-        setCheckbox (e.target.name)
+        setCheck (e.target.name)
 
 
          // let checkbox = Input.checkbox
-        for (let i= 0; i <= checkbox ; i++){
-            setCheckbox( [...checkbox[i]] )
+        for (let i= 0; i <= check ; i++){
+            setCheck( [...check[i]] )
             // checkValue.push(checkbox[i])
             // setCheckValue([...checkValue,check[i]])
         }
         // props.createDataChild(valueTab)
-        console.log(checkbox)
+        // console.log(check)
     }
 
     const handleSubmit=(event)=>{
 
         event.preventDefault();
         const data = new FormData(event.target);
+        // FormData={valueTab:props.valueTab , valueData:props.valueData , imgFile:props.imgFile , check}
         console.log(data)
+
     }
+    props.createDataChild(check)
+
+    console.log(props.valueTab ,  props.valueData , props.imgFile , check)
+
 
     return(
 
@@ -90,7 +96,7 @@ const Publication =(props)=>{
            <ButtonGroup>
                <Button className={classnames({ active: props.activeTab === '3' },style.btn)}
                        onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>
-               <Button   className={style.btn} color={'info'}>Save</Button>
+               <Button  className={style.btn} color={'info'}>Save</Button>
            </ButtonGroup>
        </FormGroup>
        {/*<FormGroup check >*/}

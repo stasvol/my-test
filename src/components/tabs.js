@@ -17,9 +17,11 @@ import handleSubmit from "redux-form/lib/handleSubmit";
 const Tabs = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1')
-    const [disabled, setDisabled] = useState(true)
     const [valueTab, setValueTab] = useState('')
+    const [isCheck, setIsCheck] = useState(false)
     const [imgFile, setImgFile] = useState([])
+    const [valueData, setValueData] = useState(null)
+    const [check, setCheck ] =  useState()
 
     const toggle = tab => {
 
@@ -28,9 +30,15 @@ const Tabs = (props) =>{
         }
     }
 
-    // const createDataChild =(value,imgFile)=> {
-    //     setValueTab(value)
-    // }
+    const createDataChild =(value)=> {
+
+        setValueTab(value)
+        setImgFile(value)
+        setValueData(value)
+        setCheck(value)
+
+          // console.log(value)
+    }
 
     // const newValueTab = () =>{
     //     if (!valueTab ) {
@@ -97,7 +105,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Основная информация:</h4>
-                                <BasicInformation   toggle={toggle} activeTab={activeTab} />
+                                <BasicInformation createDataChild={createDataChild}  toggle={toggle} activeTab={activeTab} />
                                 {/*<ButtonGroup>*/}
                                 {/*    */}
                                 {/*    <Button disabled={!valueTab }*/}
@@ -112,7 +120,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Контактная информация:</h4>
-                                <ContactInformation  toggle={toggle} activeTab={activeTab}/>
+                                <ContactInformation createDataChild={createDataChild} toggle={toggle} activeTab={activeTab}/>
                                 {/*<FormGroup>*/}
                                 {/*    <ButtonGroup toggle={toggle} activeTab={activeTab}>*/}
                                 {/*        <Button className={classnames({ active: activeTab === '1' },style.btn)}*/}
@@ -129,7 +137,7 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Добавить фотографию:</h4>
-                                <PhotoFile  toggle={toggle} activeTab={activeTab}/>
+                                <PhotoFile  createDataChild={createDataChild} toggle={toggle} activeTab={activeTab}/>
                                 {/*<FormGroup>*/}
                                 {/*    <ButtonGroup>*/}
                                 {/*        <Button className={classnames({ active: props.activeTab === '2' },style.btn)}*/}
@@ -146,7 +154,9 @@ const Tabs = (props) =>{
                         <Row>
                             <Col sm="12">
                                 <h4>Публикация:</h4>
-                                <Publication  toggle={toggle} activeTab={activeTab}/>
+                                <Publication  valueTab={valueTab} isCheck={isCheck} valueData={valueData}
+                                             imgFile={imgFile} createDataChild={createDataChild}
+                                             toggle={toggle} activeTab={activeTab} check={check}/>
                                 {/*<FormGroup check >*/}
                                 {/*    <ButtonGroup>*/}
                                 {/*        <Button className={classnames({ active: props.activeTab === '3' },style.btn)}*/}

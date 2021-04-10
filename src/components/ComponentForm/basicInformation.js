@@ -46,11 +46,13 @@ const BasicInformation = ({...props}) => {
         const value = (e.target.value)
 
         setValueTab( [...valueTab,value])
-        // props.createDataChild(valueTab)
-            // console.log(valueTabOne)
+
+        props.createDataChild(valueTab)
+
+            // console.log(valueTab)
     }
 
-    console.log(valueTab +','+ isCheck)
+    // console.log(valueTab +','+ isCheck)
 
     const toggleCheck =()=> {
         setIsCheck(!isCheck)
@@ -59,6 +61,7 @@ const BasicInformation = ({...props}) => {
          // } else  if (!isCheck){
          //     setIsCheck(true)
          // }
+        props.createDataChild(isCheck)
     }
 
     return (

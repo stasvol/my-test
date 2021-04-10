@@ -21,7 +21,7 @@ const PhotoFile = (props) => {
         setValueTab( [...valueTab,value])
 
 
-        // props.createDataChild(valueTab,imgFile)
+        // props.createDataChild(imgFile)
         // console.log(valueTabOne)
     }
 
@@ -64,6 +64,7 @@ const PhotoFile = (props) => {
 
                }
                 reader.readAsDataURL(file)
+               props.createDataChild(imgFile)
                // console.log(file)
            })
 
@@ -81,7 +82,7 @@ const PhotoFile = (props) => {
   // document.getElementById('button').addEventListener('click',()=>{
   //     document.getElementById('exampleFile').click()
   // })
-    console.log(imgFile)
+  //   console.log(imgFile)
 
    const upload =()=> {
 

@@ -17,7 +17,7 @@ const ContactInformation = (props) => {
         setValueData([value])
 
 
-        // props.createDataChild(valueTab,valueTel)
+        props.createDataChild(valueData)
         // console.log(valueTel)
     }
     const handleSubmit = (e)=> {
@@ -26,7 +26,7 @@ const ContactInformation = (props) => {
 
 
     }
-    console.log(valueData)
+    // console.log(valueData)
 
     return (
         <Form onSubmit={handleSubmit}>
