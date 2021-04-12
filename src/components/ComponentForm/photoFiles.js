@@ -9,21 +9,21 @@ const PhotoFile = (props) => {
       const [selectedFile, setSelectedFile ] = useState([])
       const [isSelected, setIsSelected] = useState(false)
       const [imgFile, setImgFile] = useState([])
-      const [valueTab, setValueTab] = useState('')
+      // const [valueTab, setValueTab] = useState('')
 
 
-    const handleChange = (e)=>{
-
-        e.preventDefault()
-
-        const value = (e.target.value)
-
-        setValueTab( [...valueTab,value])
-
-
-        // props.createDataChild(imgFile)
-        // console.log(valueTabOne)
-    }
+    // const handleChange = (e)=>{
+    //
+    //     e.preventDefault()
+    //
+    //     const value = (e.target.value)
+    //
+    //     setValueTab( [...valueTab,value])
+    //
+    //
+    //     // props.createDataChild(imgFile)
+    //     // console.log(valueTabOne)
+    // }
 
     // const InputRef = useRef( null );
 

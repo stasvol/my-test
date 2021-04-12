@@ -1,15 +1,23 @@
-import React, {useState} from "react";
+import React, {useReducer, useState} from "react";
 import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 
 import {AvForm,AvField} from "availity-reactstrap-validation";
+import {map} from "react-bootstrap/ElementChildren";
 
-const Publication =(props)=>{
+const Publication = ({valueInfo,valueData,imgFile,...props}) => {
 
     // const [valueTab, setValueTab] = useState('')
     // const [checkValue, setCheckValue] = useState([])
     const [check, setCheck ] =  useState()
+
+    // const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    //
+    // function handleClick() {
+    //     forceUpdate();
+    // }
+
 
     // const handleChange = (checked)=>{
     //     // e.preventDefault()
@@ -28,28 +36,46 @@ const Publication =(props)=>{
 
         setCheck (e.target.name)
 
-
          // let checkbox = Input.checkbox
         for (let i= 0; i <= check ; i++){
             setCheck( [...check[i]] )
             // checkValue.push(checkbox[i])
             // setCheckValue([...checkValue,check[i]])
+            // props.createDataChild(check)
         }
-        // props.createDataChild(valueTab)
+
         // console.log(check)
     }
 
     const handleSubmit=(event)=>{
 
         event.preventDefault();
-        const data = new FormData(event.target);
+        const formData = new FormData(event.target);
         // FormData={valueTab:props.valueTab , valueData:props.valueData , imgFile:props.imgFile , check}
-        console.log(data)
+        // formData.append(props.valueTab,props.imgFile)
+        console.log(formData)
 
     }
-    props.createDataChild(check)
 
-    console.log(props.valueTab ,  props.valueData , props.imgFile , check)
+    const arr = {valueInfo,valueData,imgFile,check}
+    // console.log(valueTab , valueData , imgFile , check)
+    // const objProps = {valueTab,valueData,imgFile,check, ...props}
+    //  // Array.isArray(objProps)
+    // const valueArr = Object.entries(objProps).map(([key,value]) => (`${key} ${value}`))
+    // console.log(valueTab,valueData,imgFile,check)
+    console.log(arr)
+
+// const rendFile = () =>{
+//
+//         return(
+//             <div>
+//                 <div>{props.valueTab}</div>
+//                 <div>{props.valueData}</div>
+//                 <div>{props.imgFile}</div>
+//             </div>
+//         )
+//
+// }
 
 
     return(

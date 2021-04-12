@@ -22,7 +22,7 @@ const BasicInformation = ({...props}) => {
 
 
     const [isCheck, setIsCheck] = useState(false)
-    const [valueTab, setValueTab] = useState('')
+    const [valueInfo, setValueInfo] = useState('')
 
     // const [error, setError] = useState(false)
     // const  handleValidSubmit =(event, values) =>{
@@ -45,9 +45,9 @@ const BasicInformation = ({...props}) => {
 
         const value = (e.target.value)
 
-        setValueTab( [...valueTab,value])
+        setValueInfo( [...valueInfo,value])
 
-        props.createDataChild(valueTab)
+        props.createDataChild(valueInfo)
 
             // console.log(valueTab)
     }
@@ -63,7 +63,7 @@ const BasicInformation = ({...props}) => {
          // }
         props.createDataChild(isCheck)
     }
-
+      // console.log(isCheck ,  valueTab)
     return (
         <Form className={'mt-2'}>
             {/*{ valueTabOne.map((el,i )=> {*/}
@@ -77,7 +77,7 @@ const BasicInformation = ({...props}) => {
             <FormGroup check inline>
 
                     <Label sm={'12'} >Заголовок:
-                        <AvField onChange={handleChange} name={'text'} type="text" placeholder="Text" bsSize="lg" required/>
+                        <AvField onChange={handleChange}  name={'text'} type="text" placeholder="Text" bsSize="lg" required/>
                         {/*<Input invalid type="text" placeholder="Text" bsSize="lg"/>*/}
                         {/*<FormFeedback invalid tooltip>Oh noes! that name is already taken</FormFeedback>*/}
                     </Label>
@@ -110,7 +110,7 @@ const BasicInformation = ({...props}) => {
 
             <ButtonGroup>
 
-                <Button disabled={!valueTab }
+                <Button disabled={!valueInfo}
                         className={classnames({active: props.activeTab === '2' }, style.btnNext)}
                         onClick={() => {props.toggle('2')}} color={'success'}>Next</Button>
 
