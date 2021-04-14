@@ -8,17 +8,17 @@ import classnames from "classnames";
 const ContactInformation = (props) => {
 
     // const [valueTab, setValueTab] = useState('')
-    const [valueData, setValueData] = useState([])
+    const [valueContact, setValueContact] = useState([])
 
 
     const handleChange = (e)=>{
         e.preventDefault()
         const value = (e.target.value)
         // valueData.push(value)
-        setValueData([...valueData,e.target.value])
+        setValueContact([valueContact,value])
 
 
-        props.createDataChild(valueData)
+        props.createDataChildContact(valueContact)
         // console.log(valueTel)
     }
     // const handleSubmit = (e)=> {
@@ -48,7 +48,7 @@ const ContactInformation = (props) => {
             </FormGroup>
                 <Button className={classnames({ active: props.activeTab === '1' },style.btn)}
                         onClick={() => { props.toggle('1') }} color={'warning'}>Prev</Button>
-                <Button disabled={!valueData.length} className={classnames({ active: props.activeTab === '3' },style.btn)}
+                <Button disabled={!valueContact.length} className={classnames({ active: props.activeTab === '3' },style.btn)}
                         onClick={() => { props.toggle('3');}} color={'success'}>Next</Button>
             </AvForm>
         {/*  <FormGroup>*/}

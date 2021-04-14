@@ -45,9 +45,9 @@ const BasicInformation = ({...props}) => {
 
         const value = (e.target.value)
 
-        setValueInfo( [...valueInfo,value])
+        setValueInfo( [valueInfo,value])
 
-        props.createDataChild(valueInfo)
+        props.createDataChildInfo(valueInfo)
 
             // console.log(valueTab)
     }
@@ -61,7 +61,7 @@ const BasicInformation = ({...props}) => {
          // } else  if (!isCheck){
          //     setIsCheck(true)
          // }
-        props.createDataChild(isCheck)
+        props.createDataChildContIsCheck(isCheck)
     }
       // console.log(isCheck ,  valueTab)
     return (

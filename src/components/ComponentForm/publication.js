@@ -6,7 +6,7 @@ import classnames from "classnames";
 import {AvForm,AvField} from "availity-reactstrap-validation";
 import {map} from "react-bootstrap/ElementChildren";
 
-const Publication = ({valueInfo,valueData,imgFile,...props}) => {
+const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
 
     // const [valueTab, setValueTab] = useState('')
     // const [checkValue, setCheckValue] = useState([])
@@ -38,13 +38,13 @@ const Publication = ({valueInfo,valueData,imgFile,...props}) => {
 
          // let checkbox = Input.checkbox
         for (let i= 0; i <= check ; i++){
-            setCheck( [...check[i]] )
+            setCheck( prevCheck=>[...prevCheck,check[i]] )
             // checkValue.push(checkbox[i])
             // setCheckValue([...checkValue,check[i]])
-            // props.createDataChild(check)
+            props.createDataChildPublicCheck(check)
         }
 
-        // console.log(check)
+        console.log(check)
     }
 
     const handleSubmit=(event)=>{
@@ -57,13 +57,14 @@ const Publication = ({valueInfo,valueData,imgFile,...props}) => {
 
     }
 
-    const arr = {valueInfo,valueData,imgFile,check}
+    // const arr = {valueInfo,valueData,imgFile,check}
     // console.log(valueTab , valueData , imgFile , check)
-    // const objProps = {valueTab,valueData,imgFile,check, ...props}
+    const objProps = {valueInfo,isCheck,valueContact,imgFile,check}
     //  // Array.isArray(objProps)
-    // const valueArr = Object.entries(objProps).map(([key,value]) => (`${key} ${value}`))
+    // const valueArr = Object.entries(objProps)
+    //     .map(([key,value]) => (<span>{key}</span>))
     // console.log(valueTab,valueData,imgFile,check)
-    console.log(arr)
+    // console.log(valueArr)
 
 // const rendFile = () =>{
 //
@@ -79,7 +80,7 @@ const Publication = ({valueInfo,valueData,imgFile,...props}) => {
 
 
     return(
-
+ <div className={style.body}>
    <Form onSubmit={handleSubmit}>
 
     <FormGroup check>
@@ -132,7 +133,32 @@ const Publication = ({valueInfo,valueData,imgFile,...props}) => {
        {/*</ButtonGroup>*/}
        {/*    </FormGroup>*/}
    </Form>
+     <div>
+         <div>
+             <span className={style.remove}>x</span>
+         </div>
+          <div>
+              <h3>Ваше объявление</h3>
+          </div>
+
+         {
+              Object.entries(objProps).map(([key,value])=> {
+               return  <div>
+
+                   <div  className={style.wid}><div>{key}</div><input   key={key}  value={value}/> </div>
+                                  {/*<img src={value}/>*/}
+                             {/*key={key}*/}
+                             {/*property={key}*/}
+                             {/* value={Number(value)}*/}
+
+
+                 </div>
+             })
+         }
+     </div>
+ </div>
     )
 }
+
 
 export default Publication

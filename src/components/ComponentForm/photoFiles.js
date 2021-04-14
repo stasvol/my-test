@@ -64,7 +64,7 @@ const PhotoFile = (props) => {
 
                }
                 reader.readAsDataURL(file)
-               props.createDataChild(imgFile)
+               props.createDataChildImg(imgFile)
                // console.log(file)
            })
 
