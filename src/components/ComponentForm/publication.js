@@ -5,19 +5,24 @@ import classnames from "classnames";
 
 import {AvForm,AvField} from "availity-reactstrap-validation";
 import {map} from "react-bootstrap/ElementChildren";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
 
     // const [valueTab, setValueTab] = useState('')
     // const [checkValue, setCheckValue] = useState([])
-    const [check, setCheck ] =  useState()
+    const [check, setCheck ] =  useState([])
+    const [modal, setModal] = useState(false);
+
+    const {buttonLabel, className} = props;
+    const toggle = () => setModal(!modal);
+    const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
     // const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     //
     // function handleClick() {
     //     forceUpdate();
     // }
-
 
     // const handleChange = (checked)=>{
     //     // e.preventDefault()
@@ -32,34 +37,38 @@ const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
     //     // console.log(checked)
     // }
 
+
+
     const handleClick =(e)=>{
 
         setCheck (e.target.name)
 
          // let checkbox = Input.checkbox
-        for (let i= 0; i <= check ; i++){
-            setCheck( prevCheck=>[...prevCheck,check[i]] )
+        for (let i= 0; i <= check.length ; i++){
+            setCheck( prevCheck=>[prevCheck,check[i]] )
             // checkValue.push(checkbox[i])
             // setCheckValue([...checkValue,check[i]])
-            props.createDataChildPublicCheck(check)
+            // props.createDataChildPublicCheck([check])
         }
 
-        console.log(check)
+        console.log([check])
     }
 
-    const handleSubmit=(event)=>{
-
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        // FormData={valueTab:props.valueTab , valueData:props.valueData , imgFile:props.imgFile , check}
-        // formData.append(props.valueTab,props.imgFile)
-        console.log(formData)
-
-    }
+    // const handleSubmit=(event)=>{
+    //
+    //     event.preventDefault();
+    //     const formData = new FormData(event.target);
+    //     // FormData={valueTab:props.valueTab , valueData:props.valueData , imgFile:props.imgFile , check}
+    //     // formData.append(props.valueTab,props.imgFile)
+    //     console.log(formData)
+    //
+    // }
 
     // const arr = {valueInfo,valueData,imgFile,check}
     // console.log(valueTab , valueData , imgFile , check)
     const objProps = {valueInfo,isCheck,valueContact,imgFile,check}
+    console.log(objProps)
+
     //  // Array.isArray(objProps)
     // const valueArr = Object.entries(objProps)
     //     .map(([key,value]) => (<span>{key}</span>))
@@ -81,7 +90,7 @@ const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
 
     return(
  <div className={style.body}>
-   <Form onSubmit={handleSubmit}>
+   <Form >
 
     <FormGroup check>
         <Label check>
@@ -123,7 +132,7 @@ const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
            <ButtonGroup>
                <Button className={classnames({ active: props.activeTab === '3' },style.btn)}
                        onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>
-               <Button  className={style.btn} color={'info'}>Save</Button>
+               <Button  className={style.btn} color={'info'} onClick={toggle}>Save</Button>
            </ButtonGroup>
        </FormGroup>
        {/*<FormGroup check >*/}
@@ -134,27 +143,58 @@ const Publication = ({valueInfo,isCheck,valueContact,imgFile,...props}) => {
        {/*    </FormGroup>*/}
    </Form>
      <div>
+         {/*<div>*/}
+         {/*    <span className={style.remove}>x</span>*/}
+         {/*</div>*/}
+         {/* <div>*/}
+         {/*     <h3>Ваше объявление</h3>*/}
+         {/* </div>*/}
+
+         {/*{*/}
+         {/*     Object.entries(objProps).map(([key,value])=> {*/}
+         {/*      return  <div>*/}
+
+         {/*          <div  className={style.wid}><div>{key}</div><input   key={key}  value={value}/> </div>*/}
+         {/*                         /!*<img src={value}/>*!/*/}
+         {/*                    /!*key={key}*!/*/}
+         {/*                    /!*property={key}*!/*/}
+         {/*                    /!* value={Number(value)}*!/*/}
+         {/*          </div>*/}
+         {/*    })*/}
+         {/*}*/}
+         {/*{*/}
+         {/*    Object.entries(objProps).map(([key, value]) =>  <div> <img key={key} src={value} /></div>)*/}
+         {/*}*/}
+
          <div>
-             <span className={style.remove}>x</span>
+             {/*<Button color="danger" onClick={toggle}>{buttonLabel}</Button>*/}
+             <Modal isOpen={modal} toggle={toggle} className={className}>
+                 <ModalHeader toggle={toggle} close={closeBtn}><h4>Ваше объявление</h4></ModalHeader>
+                 <ModalBody>
+                     {
+
+                             Object.entries(objProps)
+                             // .filter((key,value) => { if(key === imgFile.length) return false})
+                             .map(([key,value])=> {
+                             return  <div>
+
+                                 <div  className={style.wid}><b>{key}</b><input className={style.modInput}  key={key}  value={value}/> </div>
+
+                             </div>
+                         })
+
+                     }
+                     {
+                         Object.entries(objProps).map(([key, value]) =>  <div> <img className={style.img} key={key} src={value} /></div>)
+                          // .filter(key => { if(key === imgFile) return false})
+                     }
+                 </ModalBody>
+                 <ModalFooter>
+                     {/*<Button color="primary" onClick={toggle}>Do Something</Button>{' '}*/}
+                     <Button color="secondary" onClick={toggle}>Cancel</Button>
+                 </ModalFooter>
+             </Modal>
          </div>
-          <div>
-              <h3>Ваше объявление</h3>
-          </div>
-
-         {
-              Object.entries(objProps).map(([key,value])=> {
-               return  <div>
-
-                   <div  className={style.wid}><div>{key}</div><input   key={key}  value={value}/> </div>
-                                  {/*<img src={value}/>*/}
-                             {/*key={key}*/}
-                             {/*property={key}*/}
-                             {/* value={Number(value)}*/}
-
-
-                 </div>
-             })
-         }
      </div>
  </div>
     )

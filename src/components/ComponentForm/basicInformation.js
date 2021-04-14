@@ -45,7 +45,7 @@ const BasicInformation = ({...props}) => {
 
         const value = (e.target.value)
 
-        setValueInfo( [valueInfo,value])
+        setValueInfo( [value])
 
         props.createDataChildInfo(valueInfo)
 

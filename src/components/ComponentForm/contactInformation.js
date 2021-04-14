@@ -15,7 +15,7 @@ const ContactInformation = (props) => {
         e.preventDefault()
         const value = (e.target.value)
         // valueData.push(value)
-        setValueContact([valueContact,value])
+        setValueContact([value])
 
 
         props.createDataChildContact(valueContact)

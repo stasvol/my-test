@@ -171,7 +171,7 @@ const Tabs = (props) =>{
                                 <h4>Публикация:</h4>
                                 <Publication createDataChildPublicCheck={createDataChildPublicCheck}
                                              valueInfo={valueInfo} isCheck={isCheck} valueContact={valueContact}
-                                             imgFile={imgFile}  check={check}
+                                             imgFile={[...imgFile]}  check={check}
                                              toggle={toggle}  activeTab={activeTab} />
                                 {/*<FormGroup check >*/}
                                 {/*    <ButtonGroup>*/}

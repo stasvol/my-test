@@ -53,7 +53,7 @@ const PhotoFile = (props) => {
 
                reader.onload = ev => {
                    if (e.target.files.length <= 5) {
-                       setImgFile(prevImgFile => [...prevImgFile, ev.currentTarget.result])
+                       setImgFile( prevImgFile=>[ ...prevImgFile, ev.currentTarget.result])
                    }
                    // console.log(ev.currentTarget.result)
                    // Input.insertAdjacentHTML('afterend',`< img src=${ev.target.result}/>`)
