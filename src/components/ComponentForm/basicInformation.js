@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     Form,
     FormGroup,
@@ -21,7 +21,7 @@ import classNames from "classnames";
 const BasicInformation = ({...props}) => {
 
 
-    const [isCheck, setIsCheck] = useState(false)
+    const [isCheck, setIsCheck] = useState(true)
     const [valueInfo, setValueInfo] = useState('')
 
     // const [error, setError] = useState(false)
@@ -47,10 +47,11 @@ const BasicInformation = ({...props}) => {
 
         setValueInfo( [value])
 
-        props.createDataChildInfo(valueInfo)
-
-            // console.log(valueTab)
     }
+
+    useEffect(()=> {
+        props.createDataChildInfo(valueInfo)
+    },[valueInfo])
 
     // console.log(valueTab +','+ isCheck)
 
@@ -77,7 +78,7 @@ const BasicInformation = ({...props}) => {
             <FormGroup check inline>
 
                     <Label sm={'12'} >Заголовок:
-                        <AvField onChange={handleChange}  name={'text'} type="text" placeholder="Text" bsSize="lg" required/>
+                        <AvField onChange={handleChange}  name={'text'} type="text" placeholder="Text" bsSize="lg" required  />
                         {/*<Input invalid type="text" placeholder="Text" bsSize="lg"/>*/}
                         {/*<FormFeedback invalid tooltip>Oh noes! that name is already taken</FormFeedback>*/}
                     </Label>
@@ -87,7 +88,7 @@ const BasicInformation = ({...props}) => {
             <FormGroup>
 
                     <Label for="exampleText" sm={'3'}>Описание:
-                        <AvField onChange={handleChange} type="textarea" name={"textarea"} id="exampleText" placeholder="text" />
+                        <AvField onChange={handleChange} type="textarea" name={"textarea"} id="exampleText" placeholder="text"   />
                         {/*<Input valid type="textarea" name="text" id="exampleText" />*/}
                         {/*<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>*/}
                     </Label>
@@ -97,8 +98,8 @@ const BasicInformation = ({...props}) => {
             <FormGroup check inline>
                 <Label check>Статус:
                      {isCheck
-                        ?  <b><i className={style.on}>  ON</i></b>
-                        :  <b><i className={style.of}>  OF</i></b>
+                        ?  <b><i className={style.of}>  OF</i></b>
+                        :  <b><i className={style.on}>  ON</i></b>
                      }
                     <CustomInput onClick={toggleCheck} type="switch" id="exampleCustomSwitch" name="customSwitch"
                                      label="select" value={isCheck}  />

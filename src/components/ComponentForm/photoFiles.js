@@ -1,14 +1,15 @@
-import React, {useRef, useState} from "react"
-import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup, Col} from 'reactstrap';
+import React, {useEffect, useRef, useState} from "react"
+import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup, Col, ModalBody} from 'reactstrap';
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 
 
 const PhotoFile = (props) => {
 
-      const [selectedFile, setSelectedFile ] = useState([])
+      const [selectedFile, setSelectedFile ] = useState()
       const [isSelected, setIsSelected] = useState(false)
-      const [imgFile, setImgFile] = useState([])
+      const [imgFile, setImgFile] = useState(  [])
+
       // const [valueTab, setValueTab] = useState('')
 
 
@@ -46,9 +47,9 @@ const PhotoFile = (props) => {
 
            files.forEach(file => {
 
-             if (!file.type.match('image')){
-                 return
-             }
+             // if (!file.type.match('image')){
+             //     return
+             // }
                const reader = new FileReader()
 
                reader.onload = ev => {
@@ -64,10 +65,9 @@ const PhotoFile = (props) => {
 
                }
                 reader.readAsDataURL(file)
-               props.createDataChildImg(imgFile)
+               // props.createDataChildImg(imgFile)
                // console.log(file)
            })
-
         // if (e.target.files.length <= 5) {
         //     const arr =[]
         //     const file = e.target.files
@@ -79,14 +79,20 @@ const PhotoFile = (props) => {
         //     console.log(file)
         // }
     }
+    useEffect(()=>{
+        props.createDataChildImg(imgFile)
+        // if (!imgFile ){
+        //     setImgFile([imgFile])
+        // }
+
+    },[imgFile])
+
   // document.getElementById('button').addEventListener('click',()=>{
   //     document.getElementById('exampleFile').click()
   // })
   //   console.log(imgFile)
-
-   const upload =()=> {
-
-       // InputRef.currentTarget.click();
+    const upload =()=> {
+          // InputRef.currentTarget.click();
         document.getElementById("exampleFile").click()
     }
 
@@ -99,7 +105,7 @@ const PhotoFile = (props) => {
         <Form >
             <FormGroup>
                 <Label for="exampleFile">
-                <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880}/>
+                <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880} value={''}/>
                 </Label>
                 <Button className={style.btnAbsol} id={'button'} color={'info'} onClick={upload}>Upload files</Button>
             </FormGroup>
@@ -145,3 +151,6 @@ const PhotoFile = (props) => {
 }
 
 export default PhotoFile
+
+
+

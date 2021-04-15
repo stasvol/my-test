@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import classnames from "classnames"
 import style from "./CSS/tabs.module.css"
 import {Button, ButtonGroup, Card, CardText, CardTitle, Col, Container, Form, FormGroup, Nav,
@@ -47,8 +47,8 @@ const Tabs = (props) =>{
         setIsCheck(value)
     }
 
-    const createDataChildPublicCheck =(check)=> {
-        setCheck(check)
+    const createDataChildPublicCheck =(value)=> {
+        setCheck(value)
     }
 
 
@@ -85,7 +85,7 @@ const Tabs = (props) =>{
 
                     </NavItem>
                     <NavItem>
-                        <NavLink disabled={!valueContact}
+                        <NavLink disabled={!valueContact<=0}
                             className={classnames({ active: activeTab === '2' })}
                             onClick={() => { toggle('2'); }}>
                             Tab2
@@ -171,7 +171,7 @@ const Tabs = (props) =>{
                                 <h4>Публикация:</h4>
                                 <Publication createDataChildPublicCheck={createDataChildPublicCheck}
                                              valueInfo={valueInfo} isCheck={isCheck} valueContact={valueContact}
-                                             imgFile={[...imgFile]}  check={check}
+                                             imgFile={[imgFile]}  check={check}
                                              toggle={toggle}  activeTab={activeTab} />
                                 {/*<FormGroup check >*/}
                                 {/*    <ButtonGroup>*/}

@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import {Button, Form, FormGroup, Label, Input, FormText, ButtonGroup} from 'reactstrap';
 import {AvForm,AvField} from "availity-reactstrap-validation";
 import style from "../CSS/tabs.module.css";
@@ -16,11 +16,11 @@ const ContactInformation = (props) => {
         const value = (e.target.value)
         // valueData.push(value)
         setValueContact([value])
-
-
-        props.createDataChildContact(valueContact)
-        // console.log(valueTel)
     }
+
+    useEffect(()=>{
+        props.createDataChildContact(valueContact)
+    },[valueContact])
     // const handleSubmit = (e)=> {
     //
     //     e.preventDefault()
@@ -35,14 +35,14 @@ const ContactInformation = (props) => {
             <FormGroup>
 
                 <Label for="exampleEmail">Telephone:
-                    <AvField onChange={handleChange} type="tel" name="telephone" id="exampleEmail" placeholder="telephone number" bsSize="lg" required/>
+                    <AvField onChange={handleChange} type="tel" name="telephone" id="exampleEmail" placeholder="telephone number" bsSize="lg" required  />
                 </Label>
 
             </FormGroup>
             <FormGroup>
 
                 <Label for="exampleEmail">Email:
-                    <AvField onChange={handleChange}  type="email" name="email" id="exampleEmail" placeholder="email" bsSize="lg" required/>
+                    <AvField onChange={handleChange}  type="email" name="email" id="exampleEmail" placeholder="email" bsSize="lg" required />
                 </Label>
 
             </FormGroup>
