@@ -79,11 +79,9 @@ const PhotoFile = (props) => {
         //     console.log(file)
         // }
     }
+
     useEffect(()=>{
         props.createDataChildImg(imgFile)
-        // if (!imgFile ){
-        //     setImgFile([imgFile])
-        // }
 
     },[imgFile])
 
@@ -105,7 +103,7 @@ const PhotoFile = (props) => {
         <Form >
             <FormGroup>
                 <Label for="exampleFile">
-                <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880} value={''}/>
+                <Input  hidden onChange={saveFile} type="file" name="file" id="exampleFile" multiple={true}  maxfilesize={5242880} />
                 </Label>
                 <Button className={style.btnAbsol} id={'button'} color={'info'} onClick={upload}>Upload files</Button>
             </FormGroup>

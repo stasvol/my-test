@@ -44,13 +44,13 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
         // let checkbox = Input.checkbox
         for (let i = 0; i <= check.length; i++) {
-            setCheck(prevCheck => [prevCheck, check[i]])
+            setCheck( prevCheck=>[prevCheck,check[i]])
             // checkValue.push(checkbox[i])
             // setCheckValue([...checkValue,check[i]])
             // props.createDataChildPublicCheck([check])
         }
 
-        console.log([check])
+        // console.log([check])
     }
 
     // const handleSubmit=(event)=>{
@@ -67,6 +67,10 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
     // console.log(valueTab , valueData , imgFile , check)
     const objProps = {valueInfo, isCheck, valueContact, imgFile, check}
     console.log(objProps)
+
+  //   const handleChange =(value) => {
+  // console.log(value)
+  //   }
 
     //  // Array.isArray(objProps)
     // const valueArr = Object.entries(objProps)
@@ -94,40 +98,35 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" name={'УСЛУГА 1'} checkbox={'УСЛУГА 1'}
-                                   value={'УСЛУГА 1'}/> УСЛУГА 1
+                            <Input onClick={handleClick} type="checkbox" name={'Услуга 1 '}/> Услуга 1
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" checkbox={'УСЛУГА 2'} name={'УСЛУГА 2'}
-                                   value={'УСЛУГА 2'}/> УСЛУГА 2
+                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 2 '}/> Услуга 2
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" checkbox={'УСЛУГА 3'} name={'УСЛУГА 3'}
-                                   value={'УСЛУГА 3'}/> УСЛУГА3
+                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 3 '}/> Услуга 3
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" checkbox={'УСЛУГА 4'} name={'УСЛУГА 4'}
-                                   value={'УСЛУГА 4'}/> УСЛУГА 4
+                            <Input onClick={handleClick} type="checkbox" name={'Услуга 4 '}/> Услуга 4
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" checkbox={'УСЛУГА 5'} name={'УСЛУГА 5'}
-                                   value={'УСЛУГА 5'}/> УСЛУГА 5
+                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 5 '}/> Услуга 5
                         </div>
                     </Label>
                 </FormGroup>
@@ -135,9 +134,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                 <FormGroup check>
                     <ButtonGroup>
                         <Button className={classnames({active: props.activeTab === '3'}, style.btn)}
-                                onClick={() => {
-                                    props.toggle('3');
-                                }} color={'warning'}>Prev</Button>
+                                onClick={() => {props.toggle('3');}} color={'warning'}>Prev</Button>
                         <Button className={style.btn} color={'info'} onClick={toggle}>Save</Button>
                     </ButtonGroup>
                 </FormGroup>
@@ -175,7 +172,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                 <div>
                     {/*<Button color="danger" onClick={toggle}>{buttonLabel}</Button>*/}
                     <Modal isOpen={modal} toggle={toggle} className={className}>
-                        <ModalHeader toggle={toggle} close={closeBtn}><h4>Ваше объявление</h4></ModalHeader>
+                        <ModalHeader toggle={toggle} close={closeBtn}>Ваше объявление</ModalHeader>
 
                         <ModalBody>
                             {/*{*/}
@@ -211,8 +208,9 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                                     .map(([key, value]) => {
                                         return <div>
 
-                                            <div className={style.wid}><b>{key}</b><input className={style.modInput}
-                                                                                          key={key} value={value}/>
+                                            <div key={key.toString()} className={style.wid}><b key={key.value}>{key} :</b>
+                                                   <span className={style.modInput}><i>{value?.toString()}</i></span>
+                                                   {/*<input key={key} value={value} className={style.modInput}/>*/}
                                             </div>
 
                                         </div>

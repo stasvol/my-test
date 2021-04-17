@@ -18,11 +18,12 @@ import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 import classNames from "classnames";
 
+
 const BasicInformation = ({...props}) => {
 
 
-    const [isCheck, setIsCheck] = useState(true)
-    const [valueInfo, setValueInfo] = useState('')
+    const [isCheck, setIsCheck] = useState(false)
+    const [valueInfo, setValueInfo] = useState([])
 
     // const [error, setError] = useState(false)
     // const  handleValidSubmit =(event, values) =>{
@@ -38,6 +39,8 @@ const BasicInformation = ({...props}) => {
     // const closeModal=()=> {
     //     setError(false);
     // }
+
+
 
     const handleChange = (e)=>{
 
@@ -56,17 +59,28 @@ const BasicInformation = ({...props}) => {
     // console.log(valueTab +','+ isCheck)
 
     const toggleCheck =()=> {
+        // if (isCheck) {
         setIsCheck(!isCheck)
-         // if (isCheck) {
          //     setIsCheck(false)
          // } else  if (!isCheck){
          //     setIsCheck(true)
          // }
         props.createDataChildContIsCheck(isCheck)
     }
+    useEffect(()=>{
+        props.createDataChildContIsCheck(isCheck)
+    })
+
+    const handleValidSubmit =(e)=> {
+        e.preventDefault()
+    }
+    const handleInvalidSubmit =(e)=> {
+        e.preventDefault()
+    }
+
       // console.log(isCheck ,  valueTab)
     return (
-        <Form className={'mt-2'}>
+        <AvForm className={'mt-2'} onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
             {/*{ valueTabOne.map((el,i )=> {*/}
             {/*    return <ul>*/}
             {/*        <li key={i}>{el}</li>*/}
@@ -74,7 +88,7 @@ const BasicInformation = ({...props}) => {
             {/*})*/}
 
             {/*}*/}
-            <AvForm>
+            {/*<AvForm >*/}
             <FormGroup check inline>
 
                     <Label sm={'12'} >Заголовок:
@@ -95,23 +109,24 @@ const BasicInformation = ({...props}) => {
 
             </FormGroup>
 
-            <FormGroup check inline>
+            <FormGroup check >
                 <Label check>Статус:
                      {isCheck
-                        ?  <b><i className={style.of}>  OF</i></b>
-                        :  <b><i className={style.on}>  ON</i></b>
+                        ?  <b><i className={style.on}>  ON</i></b>
+                        :  <b><i className={style.of}>  OF</i></b>
                      }
                     <CustomInput onClick={toggleCheck} type="switch" id="exampleCustomSwitch" name="customSwitch"
                                      label="select" value={isCheck}  />
+                    {/*<Input onClick={toggleCheck} type="checkbox"  value={isCheck}/>*/}
 
                 </Label>
             </FormGroup>
 
-            </AvForm>
+            {/*</AvForm>*/}
 
             <ButtonGroup>
 
-                <Button disabled={!valueInfo}
+                <Button disabled={ valueInfo <= 0 }
                         className={classnames({active: props.activeTab === '2' }, style.btnNext)}
                         onClick={() => {props.toggle('2')}} color={'success'}>Next</Button>
 
@@ -130,7 +145,7 @@ const BasicInformation = ({...props}) => {
             {/*        <Button onClick={handleClick}  className={style.btnNext} color={'success'}>Next</Button>*/}
             {/*    </ButtonGroup>*/}
             {/*</FormGroup>*/}
-        </Form>
+        </AvForm>
     )
 }
 
