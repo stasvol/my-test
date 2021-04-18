@@ -42,7 +42,7 @@ const ContactInformation = (props) => {
             <FormGroup>
 
                 <Label for="exampleEmail">Email:
-                    <AvField onChange={handleChange}  type="email" name="email" id="exampleEmail" placeholder="email" bsSize="lg"  />
+                    <Input onChange={handleChange}  type="email" name="email" id="exampleEmail" placeholder="email" bsSize="lg"  />
                 </Label>
 
             </FormGroup>

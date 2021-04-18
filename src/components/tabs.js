@@ -21,7 +21,7 @@ const Tabs = (props) =>{
     const [valueInfo, setValueInfo] = useState([])
     const [isCheck, setIsCheck] = useState()
     const [imgFile, setImgFile] = useState([])
-    const [valueContact, setValueContact] = useState([])
+    const [valueContact, setValueContact] = useState()
     const [check, setCheck ] =  useState()
 
     const toggle = tab => {
@@ -79,7 +79,7 @@ const Tabs = (props) =>{
                 <Nav  tabs className={style.Nav}>
 
                     <NavItem    className={style.Botton}>
-                        <NavLink disabled={valueInfo}
+                        <NavLink disabled
                             className={classnames({ active: activeTab === '1' })}
                             onClick={() => { toggle('1') }}>
                             Tab1
@@ -87,21 +87,21 @@ const Tabs = (props) =>{
 
                     </NavItem>
                     <NavItem>
-                        <NavLink disabled={valueContact}
+                        <NavLink disabled
                             className={classnames({ active: activeTab === '2' })}
                             onClick={() => { toggle('2'); }}>
                             Tab2
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink disabled={imgFile}
+                        <NavLink disabled
                             className={classnames({ active: activeTab === '3' })}
                             onClick={() => { toggle('3'); }}>
                             Tab3
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink disabled={!check}
+                        <NavLink disabled
                             className={classnames({ active: activeTab === '4' })}
                             onClick={() => { toggle('4'); }}>
                             Tab4
@@ -116,7 +116,7 @@ const Tabs = (props) =>{
                     {/*</NavItem>*/}
                 </Nav>
                 <TabContent  activeTab={activeTab}>
-                    <TabPane tabId="1">
+                    <TabPane  tabId="1">
                         <Row>
                             <Col sm="12">
                                 <h4>Основная информация:</h4>

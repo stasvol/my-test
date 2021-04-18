@@ -2,15 +2,12 @@ import React, {useReducer, useState} from "react";
 import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
-
 import {AvForm, AvField} from "availity-reactstrap-validation";
-import {map} from "react-bootstrap/ElementChildren";
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
-    // const [valueTab, setValueTab] = useState('')
-    // const [checkValue, setCheckValue] = useState([])
+
     const [check, setCheck] = useState([])
     const [modal, setModal] = useState(false);
 
@@ -38,19 +35,28 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
     // }
 
 
-    const handleClick = (e) => {
-
-        setCheck(e.target.name)
-
-        // let checkbox = Input.checkbox
-        for (let i = 0; i <= check.length; i++) {
-            setCheck( prevCheck=>[prevCheck,check[i]])
-            // checkValue.push(checkbox[i])
-            // setCheckValue([...checkValue,check[i]])
-            // props.createDataChildPublicCheck([check])
-        }
-
+    const handleChange = (e) => {
+        // setCheck(e.target.name)
+        //
+        // // let checkbox = Input.checkbox
+        // for (let i = 0; i <= check.length; i++) {
+        //
+        //         check.filter(value => value !== undefined )
+        //
+        //     setCheck( prevCheck=>[prevCheck,check])
+        //
+        //     // checkValue.push(checkbox[i])
+        //     // setCheckValue([...checkValue,check[i]])
+        //     // props.createDataChildPublicCheck([check])
+        // }
         // console.log([check])
+        setCheck(prevCheck => {
+            const checkInArr = prevCheck.some(check => check === e.target.name);
+
+            return checkInArr
+                ? [...prevCheck].filter(check => check !== e.target.name)
+                : [...prevCheck, e.target.name]
+        });
     }
 
     // const handleSubmit=(event)=>{
@@ -66,11 +72,11 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
     // const arr = {valueInfo,valueData,imgFile,check}
     // console.log(valueTab , valueData , imgFile , check)
     const objProps = {valueInfo, isCheck, valueContact, imgFile, check}
-    console.log(objProps)
+    // console.log(objProps)
 
-  //   const handleChange =(value) => {
-  // console.log(value)
-  //   }
+    //   const handleChange =(value) => {
+    // console.log(value)
+    //   }
 
     //  // Array.isArray(objProps)
     // const valueArr = Object.entries(objProps)
@@ -98,35 +104,40 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" name={'Услуга 1 '}/> Услуга 1
+                            <Input onChange={handleChange} type="checkbox" name={'Услуга 1 '}
+                                   checkbox={'Услуга 1'}/> Услуга 1
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 2 '}/> Услуга 2
+                            <Input onChange={handleChange} type="checkbox" name={'Услуга 2 '}
+                                   checkbox={'Услуга 2'}/> Услуга 2
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 3 '}/> Услуга 3
+                            <Input onChange={handleChange} type="checkbox" name={'Услуга 3 '}
+                                   checkbox={'Услуга 3'}/> Услуга 3
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox" name={'Услуга 4 '}/> Услуга 4
+                            <Input onChange={handleChange} type="checkbox" name={'Услуга 4 '}
+                                   checkbox={'Услуга 4'}/> Услуга 4
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                     <Label check>
                         <div className={style.check}>
-                            <Input onClick={handleClick} type="checkbox"  name={'Услуга 5 '}/> Услуга 5
+                            <Input onChange={handleChange} type="checkbox" name={'Услуга 5 '}
+                                   checkbox={'Услуга 5'}/> Услуга 5
                         </div>
                     </Label>
                 </FormGroup>
@@ -134,7 +145,9 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                 <FormGroup check>
                     <ButtonGroup>
                         <Button className={classnames({active: props.activeTab === '3'}, style.btn)}
-                                onClick={() => {props.toggle('3');}} color={'warning'}>Prev</Button>
+                                onClick={() => {
+                                    props.toggle('3');
+                                }} color={'warning'}>Prev</Button>
                         <Button className={style.btn} color={'info'} onClick={toggle}>Save</Button>
                     </ButtonGroup>
                 </FormGroup>
@@ -204,13 +217,19 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
                                 Object.entries(objProps)
                                     // .filter((key,value) => key !== props.imgFile  && value !== imgFile.value )
-                                    .filter(([key, value]) => {return key !== 'imgFile';})
-                                    .map(([key, value]) => {
-                                        return <div>
+                                    .filter(([key, value]) => {
+                                        console.log(value)
+                                        return (  key !== 'imgFile' && value && value.length )
+                                    })
 
-                                            <div key={key.toString()} className={style.wid}><b key={key.value}>{key} :</b>
-                                                   <span className={style.modInput}><i>{value?.toString()}</i></span>
-                                                   {/*<input key={key} value={value} className={style.modInput}/>*/}
+                                    .map(([key, value]) => {
+                                        return <div key={key.toString()}>
+                                            <div className={style.wid}><b
+                                            >{key} :</b>
+                                                <span className={style.modInput}><i>{value?.toString()}</i></span>
+
+
+                                                {/*<input key={key} value={value} className={style.modInput}/>*/}
                                             </div>
 
                                         </div>
@@ -219,9 +238,9 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
                             {
 
-                                    objProps.imgFile.map((src, i) => (
-                                        <img className={style.img} key={i} src={src} alt={'No'}/>
-                                    ))
+                                objProps.imgFile.map((src, i) => (
+                                    <img className={style.img} key={i} src={src} alt={'⚽'}/>
+                                ))
 
                             }
 
