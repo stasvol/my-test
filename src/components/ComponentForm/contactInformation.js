@@ -8,14 +8,18 @@ import classnames from "classnames";
 const ContactInformation = (props) => {
 
     // const [valueTab, setValueTab] = useState('')
-    const [valueContact, setValueContact] = useState([])
+    const [valueContact, setValueContact] = useState({telephone:'',email:''})
 
 
     const handleChange = (e)=>{
         e.preventDefault()
-        const value = (e.target.value)
+        const value = e.target.value
+        const name = e.target.name
         // valueData.push(value)
-        setValueContact([value])
+        setValueContact( prevValueContact=>({
+            ...prevValueContact,
+            [name]: value
+        }))
     }
 
     useEffect(()=>{
@@ -35,14 +39,16 @@ const ContactInformation = (props) => {
             <FormGroup>
 
                 <Label for="exampleEmail">Telephone:
-                    <AvField onChange={handleChange} type="text" name="telephone" id="exampleEmail" placeholder="telephone number" bsSize="lg" required  />
+                    <AvField onChange={handleChange} type="text" name="telephone" id="exampleEmail"
+                             placeholder="telephone number" bsSize="lg" required value={valueContact.telephone} />
                 </Label>
 
             </FormGroup>
             <FormGroup>
 
                 <Label for="exampleEmail">Email:
-                    <Input onChange={handleChange}  type="email" name="email" id="exampleEmail" placeholder="email" bsSize="lg"  />
+                    <Input onChange={handleChange}  type="email" name="email" id="exampleEmail"
+                           placeholder="email" bsSize="lg" value={valueContact.email} />
                 </Label>
 
             </FormGroup>

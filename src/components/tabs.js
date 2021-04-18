@@ -18,7 +18,8 @@ const Tabs = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1')
 
-    const [valueInfo, setValueInfo] = useState([])
+    const [valueInfo, setValueInfo] = useState()
+    const [description,setDescription] = useState('')
     const [isCheck, setIsCheck] = useState()
     const [imgFile, setImgFile] = useState([])
     const [valueContact, setValueContact] = useState()
@@ -33,6 +34,7 @@ const Tabs = (props) =>{
 
     const createDataChildInfo =(value)=> {
         setValueInfo(value)
+        // setDescription(value)
     }
 
     const createDataChildContact =(value)=> {
@@ -50,11 +52,6 @@ const Tabs = (props) =>{
     const createDataChildPublicCheck =(value)=> {
         setCheck(value)
     }
-
-
-
-
-
     // const newValueTab = () =>{
     //     if (!valueTab ) {
     //         setDisabled(true)
@@ -62,7 +59,6 @@ const Tabs = (props) =>{
     //         setDisabled(false)
     //     }
     // }
-
 
     // console.log(valueTab)
     // const handleClick = (tab) => {
@@ -72,6 +68,7 @@ const Tabs = (props) =>{
     //     //     console.log(tab)
     //     // }
     // }
+
         return (
          <div >
 
