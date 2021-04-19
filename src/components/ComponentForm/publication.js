@@ -71,7 +71,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
     // const arr = {valueInfo,valueData,imgFile,check}
     // console.log(valueTab , valueData , imgFile , check)
-    const objProps = {...valueInfo, isCheck, ...valueContact, imgFile, check}
+    const objProps = { ...valueInfo, isCheck, ...valueContact, imgFile, check}
 
     // console.log(objProps)
 

@@ -108,6 +108,7 @@ const PhotoFile = (props) => {
                 <Button className={style.btnAbsol} id={'button'} color={'info'} onClick={upload}>Upload files</Button>
             </FormGroup>
             <FormGroup>
+
                 {imgFile.map((file, i) => (
                     <img key={i} src={file} alt="image" className={style.img} />
                 ))}

@@ -142,7 +142,7 @@ const BasicInformation = ({...props}) => {
 
             <ButtonGroup>
 
-                <Button disabled={valueInfo.nameInput <= 0}
+                <Button disabled={valueInfo.mainName <= 0}
                         className={classnames({active: props.activeTab === '2'}, style.btnNext)}
                         onClick={() => {
                             props.toggle('2')
