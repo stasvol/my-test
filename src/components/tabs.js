@@ -1,20 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import classnames from "classnames"
 import style from "./CSS/tabs.module.css"
-import {Button, ButtonGroup, Card, CardText, CardTitle, Col, Container, Form, FormGroup, Nav,
-        NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
+import { Col, Container,  Nav, NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
 import BasicInformation from "./ComponentForm/basicInformation";
 import ContactInformation from "./ComponentForm/contactInformation"
 import PhotoFile from "./ComponentForm/photoFiles";
-import Nove from "./ComponentForm/Nove";
-import Example from "./ComponentForm/validateFormReactstrap";
 import Publication from "./ComponentForm/publication";
-import {AvField} from "availity-reactstrap-validation";
-import handleSubmit from "redux-form/lib/handleSubmit";
 
-// import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'react-bootstrap'
 
-const Tabs = (props) =>{
+
+
+const Tabs = () =>{
 
     const [activeTab, setActiveTab] = useState('1')
 

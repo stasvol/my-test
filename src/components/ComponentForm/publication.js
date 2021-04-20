@@ -1,8 +1,7 @@
-import React, {useReducer, useState} from "react";
-import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from "reactstrap";
+import React, { useState} from "react";
+import {Button, ButtonGroup,  Form, FormGroup, Input, Label} from "reactstrap";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
-import {AvForm, AvField} from "availity-reactstrap-validation";
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 
@@ -11,7 +10,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
     const [check, setCheck] = useState([])
     const [modal, setModal] = useState(false);
-    const [image, setImage] = useState(false)
+
 
     const {buttonLabel, className} = props;
     const toggle = () => setModal(!modal);
@@ -37,8 +36,6 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
     // }
     const toggleImage = () => {
 
-        setImage(!image)
-        console.log(image)
     }
 
     const handleChange = (e) => {
@@ -245,8 +242,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
                                     .map(([key, value]) => {
                                         return <div key={key.toString()}>
-                                            <div className={style.wid}><b
-                                            >{key} :</b>
+                                            <div className={style.wid}><b>{key} :</b>
                                                 <span className={style.modInput}><i>{value?.toString()}</i></span>
 
 
@@ -261,7 +257,7 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
                                 objProps.imgFile.map((src, i) => (
                                     <div key={i.toString()}  onClick={toggleImage} className={style.closeImage}>
-                                        <button className={style.btnClose}>&times;</button>
+                                        {/*<button className={style.btnClose}>&times;</button>*/}
                                         <img  className={style.img} key={i} src={src} alt={'⚽'}/>
                                     </div>
                                 ))

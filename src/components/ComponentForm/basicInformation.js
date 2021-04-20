@@ -1,22 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {
-    Form,
-    FormGroup,
-    Label,
-
-    Input,
-    CustomInput,
-    FormFeedback,
-    ModalBody,
-    Modal,
-    ModalHeader,
-    ModalFooter, Button, ButtonGroup, Col
-} from 'reactstrap';
+import {FormGroup, Label, CustomInput, Button, ButtonGroup} from 'reactstrap';
 import {AvForm, AvField} from 'availity-reactstrap-validation';
-import {required} from "./valdators";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
-import classNames from "classnames";
 
 
 const BasicInformation = ({...props}) => {

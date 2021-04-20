@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from "react"
-import {Button, Form, FormGroup, Label, Input, FormText, TabPane, ButtonGroup, Col, ModalBody} from 'reactstrap';
+import React, {useEffect, useState} from "react"
+import {Button, Form, FormGroup, Label, Input, ButtonGroup} from 'reactstrap';
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
 
@@ -65,6 +65,7 @@ const PhotoFile = (props) => {
 
                }
                 reader.readAsDataURL(file)
+
                // props.createDataChildImg(imgFile)
                // console.log(file)
            })
@@ -79,6 +80,22 @@ const PhotoFile = (props) => {
         //     console.log(file)
         // }
     }
+
+    const removeImage = (file) => {
+
+          // const newImage = imgFile.filter((img) => img !== file);
+        // setImgFile(newImage)
+
+        setImgFile(prev => prev.filter((img) => img !== file))
+
+        // const key = e.target.accessKey
+        //      const imgFileArr = [...imgFile]
+        //           imgFileArr.splice(key,1)
+        //       setImgFile([... imgFileArr])
+        //
+        //     console.log(imgFileArr)
+      }
+
 
     useEffect(()=>{
         props.createDataChildImg(imgFile)
@@ -110,7 +127,10 @@ const PhotoFile = (props) => {
             <FormGroup>
 
                 {imgFile.map((file, i) => (
-                    <img key={i} src={file} alt="image" className={style.img} />
+                    <div key={i} className={style.closeImage} id={i} >
+                    <Button onClick={() => removeImage(file)} className={style.btnClose}>&times;</Button>
+                    <img  accessKey={i} src={file} alt="image"  className={style.img} />
+                    </div>
                 ))}
             </FormGroup>
             <FormGroup>

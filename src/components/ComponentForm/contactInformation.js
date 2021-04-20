@@ -1,5 +1,5 @@
-import React, {useEffect, useReducer, useState} from "react";
-import {Button, Form, FormGroup, Label, Input, FormText, ButtonGroup} from 'reactstrap';
+import React, {useEffect, useState} from "react";
+import {Button, FormGroup, Label, Input} from 'reactstrap';
 import {AvForm,AvField} from "availity-reactstrap-validation";
 import style from "../CSS/tabs.module.css";
 import classnames from "classnames";
