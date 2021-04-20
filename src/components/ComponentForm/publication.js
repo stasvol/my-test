@@ -5,11 +5,13 @@ import classnames from "classnames";
 import {AvForm, AvField} from "availity-reactstrap-validation";
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
+
 const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
 
     const [check, setCheck] = useState([])
     const [modal, setModal] = useState(false);
+    const [image, setImage] = useState(false)
 
     const {buttonLabel, className} = props;
     const toggle = () => setModal(!modal);
@@ -33,7 +35,11 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
     //     props.createDataChild(valueTab)
     //     // console.log(checked)
     // }
+    const toggleImage = () => {
 
+        setImage(!image)
+        console.log(image)
+    }
 
     const handleChange = (e) => {
         // setCheck(e.target.name)
@@ -71,7 +77,9 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 
     // const arr = {valueInfo,valueData,imgFile,check}
     // console.log(valueTab , valueData , imgFile , check)
-    const objProps = { ...valueInfo, isCheck, ...valueContact, imgFile, check}
+    const objProps = {...valueInfo, isCheck, ...valueContact, imgFile, check}
+
+    // console.log(objProps)
 
     // console.log(objProps)
 
@@ -96,6 +104,18 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
 //         )
 //
 // }
+
+       // ПЕРЕВІРКА  isCheck
+//     const isArray = Array.isArray(value);
+//     const isString = typeof value === 'string';
+//
+//     const isStringOrArray = isArray || isString;
+//
+//     const hasLength = value => isStringOrArray ? value.length : true;
+//     const keyIsNotFile = key => key !== 'imgFile';
+//
+//     const condition = (key, value) => keyIsNotFile(key) && value && hasLength(value);
+
 
 
     return (
@@ -219,8 +239,8 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                                 Object.entries(objProps)
                                     // .filter((key,value) => key !== props.imgFile  && value !== imgFile.value )
                                     .filter(([key, value]) => {
-                                        console.log(value)
-                                        return (  key !== 'imgFile' && value && value.length )
+
+                                        return (key !== 'imgFile' && value && ((typeof value === 'string' || Array.isArray(value)) ? value.length : true))
                                     })
 
                                     .map(([key, value]) => {
@@ -240,7 +260,10 @@ const Publication = ({valueInfo, isCheck, valueContact, imgFile, ...props}) => {
                             {
 
                                 objProps.imgFile.map((src, i) => (
-                                    <img className={style.img} key={i} src={src} alt={'⚽'}/>
+                                    <div key={i.toString()}  onClick={toggleImage} className={style.closeImage}>
+                                        <button className={style.btnClose}>&times;</button>
+                                        <img  className={style.img} key={i} src={src} alt={'⚽'}/>
+                                    </div>
                                 ))
 
                             }

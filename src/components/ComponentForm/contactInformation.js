@@ -54,7 +54,7 @@ const ContactInformation = (props) => {
             </FormGroup>
                 <Button className={classnames({ active: props.activeTab === '1' },style.btn)}
                         onClick={() => { props.toggle('1') }} color={'warning'}>Prev</Button>
-                <Button disabled={valueContact <= 0} className={classnames({ active: props.activeTab === '3' },style.btn)}
+                <Button disabled={valueContact.telephone <= 0} className={classnames({ active: props.activeTab === '3' },style.btn)}
                         onClick={() => { props.toggle('3');}} color={'success'}>Next</Button>
             {/*</AvForm>*/}
         {/*  <FormGroup>*/}

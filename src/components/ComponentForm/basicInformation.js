@@ -22,7 +22,7 @@ import classNames from "classnames";
 const BasicInformation = ({...props}) => {
 
 
-    const [isCheck, setIsCheck] = useState()
+    const [isCheck, setIsCheck] = useState(false)
     const [valueInfo, setValueInfo] = useState({mainName: '', description: ''})
     // const [description,setDescription] = useState({nameTextarea:''})
     // const [error, setError] = useState(false)
@@ -73,14 +73,12 @@ const BasicInformation = ({...props}) => {
     // console.log(valueTab +','+ isCheck)
 
     const toggleCheck = () => {
-        setIsCheck(!isCheck)
-        // if (isCheck) {
-        //     setIsCheck('ON')
-        //  } else  if (!isCheck){
-        //      setIsCheck('OF')
-        //  }
+
+        setIsCheck(prevIsCheck => !prevIsCheck)
+
         // props.createDataChildContIsCheck(isCheck)
     }
+
     useEffect(() => {
         props.createDataChildContIsCheck(isCheck)
     }, [isCheck])
