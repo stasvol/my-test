@@ -1,219 +1,260 @@
-import React, { useState} from "react";
-import classnames from "classnames"
-import style from "./CSS/tabs.module.css"
-import { Col, Container,  Nav, NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
-import BasicInformation from "./ComponentForm/basicInformation";
-import ContactInformation from "./ComponentForm/contactInformation"
-import PhotoFile from "./ComponentForm/photoFiles";
-import Publication from "./ComponentForm/publication";
+import React, { useState } from 'react';
+import classnames from 'classnames';
+import {
+  Col,
+  Container,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  TabContent,
+  TabPane,
+} from 'reactstrap';
+// import PropType from 'prop-types';
+import style from './CSS/tabs.module.css';
+import BasicInformation from './ComponentForm/basicInformation';
+import ContactInformation from './ComponentForm/contactInformation';
+import PhotoFile from './ComponentForm/photoFiles';
+import Publication from './ComponentForm/publication';
 
+const Tabs = () => {
+  const [activeTab, setActiveTab] = useState('1');
 
+  const [valueInfo, setValueInfo] = useState();
+  // const [description, setDescription] = useState('');
+  const [isCheck, setIsCheck] = useState();
+  const [imgFile, setImgFile] = useState([]);
+  const [valueContact, setValueContact] = useState();
+  const [, setCheck] = useState();
 
-
-const Tabs = () =>{
-
-    const [activeTab, setActiveTab] = useState('1')
-
-    const [valueInfo, setValueInfo] = useState()
-    const [description,setDescription] = useState('')
-    const [isCheck, setIsCheck] = useState()
-    const [imgFile, setImgFile] = useState([])
-    const [valueContact, setValueContact] = useState()
-    const [check, setCheck ] =  useState()
-
-    const toggle = tab => {
-
-        if(activeTab !== tab ) {
-            setActiveTab(tab)
-        }
+  const toggleTab = tab => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
     }
+  };
 
-    const createDataChildInfo =(value)=> {
-        setValueInfo(value)
-        // setDescription(value)
-    }
+  const createDataChildInfo = value => {
+    setValueInfo(value);
+    // setDescription(value)
+  };
 
-    const createDataChildContact =(value)=> {
-        setValueContact(value)
-    }
+  const createDataChildContact = value => {
+    setValueContact(value);
+  };
 
-    const createDataChildImg =(value)=> {
-        setImgFile(value)
-    }
+  const createDataChildImg = value => {
+    setImgFile(value);
+  };
 
-    const createDataChildContIsCheck =(value)=> {
-        setIsCheck(value)
-    }
+  const createDataChildContIsCheck = value => {
+    setIsCheck(value);
+  };
 
-    const createDataChildPublicCheck =(value)=> {
-        setCheck(value)
-    }
-    // const newValueTab = () =>{
-    //     if (!valueTab ) {
-    //         setDisabled(true)
-    //     }else if (valueTab) {
-    //         setDisabled(false)
-    //     }
-    // }
+  const createDataChildPublicCheck = value => {
+    setCheck(value);
+  };
+  // const newValueTab = () =>{
+  //     if (!valueTab ) {
+  //         setDisabled(true)
+  //     }else if (valueTab) {
+  //         setDisabled(false)
+  //     }
+  // }
 
-    // console.log(valueTab)
-    // const handleClick = (tab) => {
-    //
-    //     // if (activeTab !== tab) {
-    //     //     setActiveTab(tab)
-    //     //     console.log(tab)
-    //     // }
-    // }
+  // console.log(valueTab)
+  // const handleClick = (tab) => {
+  //
+  //     // if (activeTab !== tab) {
+  //     //     setActiveTab(tab)
+  //     //     console.log(tab)
+  //     // }
+  // }
 
-        return (
-         <div >
+  return (
+    <div>
+      <Container className="mt-3">
+        <Nav tabs className={style.Nav}>
+          <NavItem className={style.Botton}>
+            <NavLink
+              disabled
+              className={classnames({ active: activeTab === '1' })}
+              onClick={() => {
+                toggleTab('1');
+              }}
+            >
+              Tab1
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              disabled
+              className={classnames({ active: activeTab === '2' })}
+              onClick={() => {
+                toggleTab('2');
+              }}
+            >
+              Tab2
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              disabled
+              className={classnames({ active: activeTab === '3' })}
+              onClick={() => {
+                toggleTab('3');
+              }}
+            >
+              Tab3
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              disabled
+              className={classnames({ active: activeTab === '4' })}
+              onClick={() => {
+                toggleTab('4');
+              }}
+            >
+              Tab4
+            </NavLink>
+          </NavItem>
+          {/* <NavItem> */}
+          {/*    <NavLink */}
+          {/*        className={classnames({ active: activeTab === '5' })} */}
+          {/*        onClick={() => { toggleTab('5'); }}> */}
+          {/*        More Tabs */}
+          {/*    </NavLink> */}
+          {/* </NavItem> */}
+        </Nav>
+        <TabContent activeTab={activeTab}>
+          <TabPane tabId="1">
+            <Row>
+              <Col sm="12">
+                <h4>Основная информация:</h4>
+                <BasicInformation
+                  createDataChildInfo={createDataChildInfo}
+                  createDataChildContIsCheck={createDataChildContIsCheck}
+                  toggleTab={toggleTab}
+                  activeTab={activeTab}
+                />
 
-            <Container className={'mt-3'}>
-                <Nav  tabs className={style.Nav}>
+                {/* <ButtonGroup> */}
+                {/* <Button disabled={!valueTab } */}
+                {/* className={classnames({active: activeTab === '2' },
+                style.btnNext)} */}
+                {/*  onClick={() => {toggleTab('2')}}
+                color={'success'}>Next</Button> */}
+                {/* </ButtonGroup> */}
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="2">
+            <Row>
+              <Col sm="12">
+                <h4>Контактная информация:</h4>
+                <ContactInformation
+                  createDataChildContact={createDataChildContact}
+                  toggleTab={toggleTab}
+                  activeTab={activeTab}
+                />
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="3">
+            <Row>
+              <Col sm="12">
+                <h4>Добавить фотографию:</h4>
+                <PhotoFile
+                  createDataChildImg={createDataChildImg}
+                  toggleTab={toggleTab}
+                  activeTab={activeTab}
+                />
+                {/* <FormGroup> */}
+                {/* <ButtonGroup> */}
+                {/* <Button className={classnames(
+                  { active: props.activeTab === '2' },
+                    style.btn)} */}
+                {/* onClick={() => { props.toggle('2'); }}
+                    color={'warning'}>Prev</Button> */}
+                {/* <Button  className={classnames(
+                  { active: props.activeTab === '4' },
+                    style.btn)} */}
+                {/* onClick={() => { props.toggle('4'); }}
+                color={'success'}>Next</Button> */}
+                {/*    </ButtonGroup> */}
+                {/* </FormGroup> */}
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="4">
+            <Row>
+              <Col sm="12">
+                <h4>Публикация:</h4>
+                <Publication
+                  createDataChildPublicCheck={createDataChildPublicCheck}
+                  valueInfo={valueInfo}
+                  isCheck={isCheck}
+                  valueContact={valueContact}
+                  imgFile={imgFile}
+                  toggleTab={toggleTab}
+                  activeTab={activeTab}
+                />
+                {/* <FormGroup check > */}
+                {/* <ButtonGroup> */}
+                {/* <Button className={classnames(
+                  { active: props.activeTab === '3' },style.btn)} */}
+                {/* onClick={() => { props.toggleTab('3'); }}
+                    color={'warning'}>Prev</Button> */}
+                {/* <Button onSubmit={handleSubmit} className={style.btn}
+                    color={'info'}>Save</Button> */}
+                {/* </ButtonGroup> */}
+                {/* </FormGroup> */}
+              </Col>
+            </Row>
+          </TabPane>
+          {/* <TabPane tabId="5"> */}
+          {/* <Row> */}
+          {/* <Col sm="6"> */}
+          {/* <Card body> */}
+          {/* <CardTitle>Special Title Treatment</CardTitle> */}
+          {/* <CardText>With supporting text below</CardText> */}
+          {/* <Button>Go somewhere</Button> */}
+          {/* </Card> */}
+          {/* </Col> */}
+          {/* <Col sm="6"> */}
+          {/* <Card body> */}
+          {/* <CardTitle>Special Title Treatment</CardTitle> */}
+          {/* <CardText>With supporting text below</CardText> */}
+          {/* <Button>Go somewhere</Button> */}
+          {/* </Card> */}
+          {/* </Col> */}
+          {/* </Row> */}
+          {/* </TabPane>                  */}
+        </TabContent>
+      </Container>
+      {/* <Nove/> */}
+      {/* <Example/> */}
+    </div>
+  );
+};
+// Tabs.propType = {
+//   activeTab: PropType.string,
+//   toggleTab: PropType.func,
+//   createDataChildInfo: PropType.func,
+//   createDataChildContact: PropType.func,
+//   createDataChildImg: PropType.func,
+//   createDataChildContIsCheck: PropType.func,
+// };
+// Tabs.defaultProps = {
+//   activeTab: '',
+//   toggleTab: () => {},
+//   createDataChildInfo: () => {},
+//   createDataChildContact: () => {},
+//   createDataChildImg: () => {},
+//   createDataChildContIsCheck: () => {},
+// };
 
-                    <NavItem    className={style.Botton}>
-                        <NavLink disabled
-                            className={classnames({ active: activeTab === '1' })}
-                            onClick={() => { toggle('1') }}>
-                            Tab1
-                        </NavLink>
-
-                    </NavItem>
-                    <NavItem>
-                        <NavLink disabled
-                            className={classnames({ active: activeTab === '2' })}
-                            onClick={() => { toggle('2'); }}>
-                            Tab2
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink disabled
-                            className={classnames({ active: activeTab === '3' })}
-                            onClick={() => { toggle('3'); }}>
-                            Tab3
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink disabled
-                            className={classnames({ active: activeTab === '4' })}
-                            onClick={() => { toggle('4'); }}>
-                            Tab4
-                        </NavLink>
-                    </NavItem>
-                    {/*<NavItem>*/}
-                    {/*    <NavLink*/}
-                    {/*        className={classnames({ active: activeTab === '5' })}*/}
-                    {/*        onClick={() => { toggle('5'); }}>*/}
-                    {/*        More Tabs*/}
-                    {/*    </NavLink>*/}
-                    {/*</NavItem>*/}
-                </Nav>
-                <TabContent  activeTab={activeTab}>
-                    <TabPane  tabId="1">
-                        <Row>
-                            <Col sm="12">
-                                <h4>Основная информация:</h4>
-                                <BasicInformation createDataChildInfo={createDataChildInfo}
-                                                  createDataChildContIsCheck={createDataChildContIsCheck}
-                                                  toggle={toggle} activeTab={activeTab} />
-                                {/*<ButtonGroup>*/}
-                                {/*    */}
-                                {/*    <Button disabled={!valueTab }*/}
-                                {/*        className={classnames({active: activeTab === '2' }, style.btnNext)}*/}
-                                {/*         onClick={() => {toggle('2')}} color={'success'}>Next</Button>*/}
-
-                                {/*</ButtonGroup>*/}
-                            </Col>
-                        </Row>
-                    </TabPane>
-                    <TabPane tabId="2">
-                        <Row>
-                            <Col sm="12">
-                                <h4>Контактная информация:</h4>
-                                <ContactInformation createDataChildContact={createDataChildContact}
-                                                    toggle={toggle} activeTab={activeTab}/>
-                                {/*<FormGroup>*/}
-                                {/*    <ButtonGroup toggle={toggle} activeTab={activeTab}>*/}
-                                {/*        <Button className={classnames({ active: activeTab === '1' },style.btn)}*/}
-                                {/*                        onClick={() => { toggle('1') }} color={'warning'}>Prev</Button>*/}
-
-                                {/*        <Button disabled={!valueTab} className={classnames({ active: activeTab === '3' },style.btn)}*/}
-                                {/*                  onClick={() => { toggle('3'); }} color={'success'}>Next</Button>*/}
-                                {/*    </ButtonGroup>*/}
-                                {/*</FormGroup>*/}
-                            </Col>
-                        </Row>
-                    </TabPane>
-                    <TabPane tabId="3">
-                        <Row>
-                            <Col sm="12">
-                                <h4>Добавить фотографию:</h4>
-                                <PhotoFile createDataChildImg={createDataChildImg}  toggle={toggle} activeTab={activeTab}/>
-                                {/*<FormGroup>*/}
-                                {/*    <ButtonGroup>*/}
-                                {/*        <Button className={classnames({ active: props.activeTab === '2' },style.btn)}*/}
-                                {/*                            onClick={() => { props.toggle('2'); }} color={'warning'}>Prev</Button>*/}
-
-                                {/*        <Button  className={classnames({ active: props.activeTab === '4' }, style.btn)}*/}
-                                {/*                 onClick={() => { props.toggle('4'); }} color={'success'}>Next</Button>*/}
-                                {/*    </ButtonGroup>*/}
-                                {/*</FormGroup>*/}
-                            </Col>
-                        </Row>
-                    </TabPane>
-                    <TabPane tabId="4">
-                        <Row>
-                            <Col sm="12">
-                                <h4>Публикация:</h4>
-                                <Publication createDataChildPublicCheck={createDataChildPublicCheck}
-                                             valueInfo={valueInfo} isCheck={isCheck} valueContact={valueContact}
-                                             imgFile={imgFile}
-                                             toggle={toggle}  activeTab={activeTab} />
-                                {/*<FormGroup check >*/}
-                                {/*    <ButtonGroup>*/}
-                                {/*        <Button className={classnames({ active: props.activeTab === '3' },style.btn)}*/}
-                                {/*                onClick={() => { props.toggle('3'); }}  color={'warning'}>Prev</Button>*/}
-                                {/*        <Button onSubmit={handleSubmit} className={style.btn} color={'info'}>Save</Button>*/}
-                                {/*    </ButtonGroup>*/}
-                                {/*</FormGroup>*/}
-                            </Col>
-                        </Row>
-                    </TabPane>
-                    {/*<TabPane tabId="5">*/}
-                    {/*    <Row>*/}
-                    {/*        <Col sm="6">*/}
-                    {/*            <Card body>*/}
-                    {/*                <CardTitle>Special Title Treatment</CardTitle>*/}
-                    {/*                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
-                    {/*                <Button>Go somewhere</Button>*/}
-                    {/*            </Card>*/}
-                    {/*        </Col>*/}
-                    {/*        <Col sm="6">*/}
-                    {/*            <Card body>*/}
-                    {/*                <CardTitle>Special Title Treatment</CardTitle>*/}
-                    {/*                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
-                    {/*                <Button>Go somewhere</Button>*/}
-                    {/*            </Card>*/}
-                    {/*        </Col>*/}
-                    {/*    </Row>*/}
-                    {/*</TabPane>                  */}
-                </TabContent>
-            </Container>
-             {/*<Nove/>*/}
-             {/*<Example/>*/}
-         </div>
-        )
-}
-
-export default Tabs
-
-
-
-
-
-
-
-
+export default Tabs;
 
 // <Container>
 //     <TabPane id={'left-tabs-example'}  defaultActiveKey={'one'}>

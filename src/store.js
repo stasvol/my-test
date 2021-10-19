@@ -1,25 +1,22 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import { combineReducers, createStore } from 'redux';
 
+import { reducer as formReducer } from 'redux-form';
 
-import { reducer as formReducer } from 'redux-form'
-
-
-let reducers = combineReducers({
-    form: formReducer,
-
-})
+const reducers = combineReducers({
+  form: formReducer,
+});
 const store = createStore(
-    reducers, /* preloadedState, */
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
+  reducers /* preloadedState, */,
+  window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION(),
 );
-
+// eslint disable - next-line
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 }) || compose;
+// eslint-disable-next-line max-len
+// window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 }) || compose;
+// eslint-disable-next-line max-len
 // const store = createStore(reducers, composeEnhancers( applyMiddleware(thunkMiddleware)));
-
 
 // const store = createStore(reducers, /* preloadedState, */ compose(
 // let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
-export default store
+export default store;

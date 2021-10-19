@@ -36,9 +36,12 @@
 //                     <FormGroup check inline>
 //
 //                         <Label>Заголовок:
-//                             <AvField name={'text'} type="text" placeholder="Text" bsSize="lg" required/>
-//                             {/*<Input invalid type="text" placeholder="Text" bsSize="lg"/>*/}
-//                             {/*<FormFeedback invalid tooltip>Oh noes! that name is already taken</FormFeedback>*/}
+//                             <AvField name={'text'} type="text"
+//                             placeholder="Text" bsSize="lg" required/>
+//                             {/*<Input invalid type="text"
+//                             placeholder="Text" bsSize="lg"/>*/}
+//                             {/*<FormFeedback invalid tooltip>Oh noes!
+//                             that name is already taken</FormFeedback>*/}
 //                         </Label>
 //
 //
@@ -46,27 +49,38 @@
 //                     <FormGroup>
 //
 //                         <Label for="exampleText" sm={6}>Описание:
-//                             <AvField type="textarea" name={"text"} id="exampleText" placeholder="text" required/>
-//                             {/*<Input valid type="textarea" name="text" id="exampleText" />*/}
-//                             {/*<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>*/}
+//                             <AvField type="textarea" name={"text"}
+//                             id="exampleText" placeholder="text" required/>
+//                             {/*<Input valid type="textarea"
+//                             name="text" id="exampleText" />*/}
+
+//                            {/*<FormFeedback valid tooltip>Sweet! that
+//                             name is available</FormFeedback>*/}
 //                         </Label>
 //
 //                     </FormGroup>
 //
 //                     <FormGroup check inline>
 //                         <Label check>Статус:
-//                             <CustomInput type="switch" id="exampleCustomSwitch" name="customSwitch"
-//                                          label="Turn on this custom switch"/>
+//                             <CustomInput type="switch"
+//                             id="exampleCustomSwitch"
+//                             name="customSwitch"
+//                            label="Turn on this custom switch"/>
 //                         </Label>
 //                     </FormGroup>
 //                 </AvForm>
-//                 <Modal isOpen={this.state.text !== false} toggle={this.closeModal}>
-//                     <ModalHeader toggle={this.closeModal}>Form is {modalError} valid!</ModalHeader>
+//                 <Modal isOpen={this.state.text !== false}
+//                 toggle={this.closeModal}>
+//                     <ModalHeader toggle={this.closeModal}>
+//                     Form is {modalError} valid!</ModalHeader>
 //                     <ModalBody>
-//                         You have {modalError} successfully filled out the form and submitted it. Your  ({this.state.text}) is {modalError} valid!
+//                         You have {modalError} successfully filled
+//                         out the form and submitted it.
+//                         Your  ({this.state.text}) is {modalError} valid!
 //                     </ModalBody>
 //                     <ModalFooter>
-//                         <Button color="primary" onClick={this.closeModal}>Ok, got it!</Button>
+//                         <Button color="primary"
+//                         onClick={this.closeModal}>Ok, got it!</Button>
 //                     </ModalFooter>
 //                 </Modal>
 //             </Form>
