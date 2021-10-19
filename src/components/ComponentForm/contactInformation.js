@@ -17,6 +17,8 @@ const ContactInformation = ({
   });
 
   const handleChange = e => {
+    //  eslint-disable-next-line
+    debugger;
     e.preventDefault();
     const { value } = e.target;
     const { name } = e.target;

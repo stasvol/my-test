@@ -352,9 +352,15 @@ const Publication = ({
 Publication.propTypes = {
   activeTab: PropTypes.string,
   toggleTab: PropTypes.func,
-  valueInfo: PropTypes.object,
+  valueInfo: PropTypes.shape({
+    mainName: PropTypes.string,
+    description: PropTypes.string,
+  }),
   isCheck: PropTypes.bool,
-  valueContact: PropTypes.object,
+  valueContact: PropTypes.shape({
+    telephone: PropTypes.string,
+    email: PropTypes.string,
+  }),
   imgFile: PropTypes.array,
 };
 Publication.defaultProps = {
