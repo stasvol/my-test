@@ -10,6 +10,7 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
   const [imgFile, setImgFile] = useState([]);
 
   // const [valueTab, setValueTab] = useState('')
+  // const [valueTab, setValueTab] = useState('')
 
   // const handleChange = (e)=>{
   //
