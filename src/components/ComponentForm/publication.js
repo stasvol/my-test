@@ -95,6 +95,7 @@ const Publication = ({
   // eslint-disable-next-line max-len
   const objProps = { ...valueInfo, isCheck, ...valueContact, imgFile, check };
   // const objProps = { ...props, check };
+  // const objProps = { ...props, check };
 
   //   const handleChange =(value) => {
   // console.log(value)

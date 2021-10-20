@@ -39,6 +39,7 @@ const BasicInformation = ({
     // setValueInfo( prevValueInfo =>
     // ({ ...prevValueInfo,[e.target.name]: value}))
     // setValueInfo([...valueInfo, {[e.target.name]: value }])
+    // setValueInfo([...valueInfo, {[e.target.name]: value }])
     setValueInfo(prevValueInfo => ({
       ...prevValueInfo,
       [name]: value,

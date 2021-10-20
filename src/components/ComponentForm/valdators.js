@@ -6,3 +6,4 @@ export const maxLength = max => value =>
 
 export const minLength = min => value =>
   value && value.length < min ? `Length is < ${min} symbol ` : undefined;
+// add
